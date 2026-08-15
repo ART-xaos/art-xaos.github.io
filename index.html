@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мастерская рисунка — репетиторство по рисунку, живописи и композиции</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg-wash" aria-hidden="true"></div>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">АП</span>
+      <span class="logo-text">Анастасия Погорелова<small>рисунок · живопись · композиция</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <ul class="tabs" id="tabs">
+      <li><a href="#about"><span class="tab-num">01</span>Обо мне</a></li>
+      <li><a href="#studio"><span class="tab-num">02</span>Студия</a></li>
+      <li><a href="#students"><span class="tab-num">03</span>Ученики</a></li>
+      <li><a href="#programs"><span class="tab-num">04</span>Программы</a></li>
+      <li><a href="#contact"><span class="tab-num">05</span>Контакты</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO / ЧАСТЬ 1 ============ -->
+<section class="hero" id="top" data-accent="blue">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Преподаватель рисунка и живописи</div>
+      <h1>Учу видеть форму —<br>и переносить её <em>на бумагу</em>.</h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Занимаюсь академическим рисунком, живописью и композицией со взрослыми и детьми — от первого штриха до портфолио для поступления.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-primary">Записаться на пробное занятие →</a>
+        <a href="#programs" class="btn btn-ghost">Смотреть программы</a>
+      </div>
+      <div class="hero-signature">
+        <svg class="signature sig-draw" viewBox="0 0 220 60" width="140" height="38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 42 C 26 12, 42 54, 60 26 S 92 6, 112 34 S 148 54, 168 20 C 182 4, 198 14, 214 28"/>
+        </svg>
+        <span>Личная подпись на каждой работе</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame">
+        <div class="ph" style="--ar:4/5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.4"/><path d="M4 20c1.5-4 4.8-6 8-6s6.5 2 8 6"/></svg>
+          <div class="ph-label">ФОТО: портрет,<br>улыбаюсь, студийный свет</div>
+        </div>
+      </div>
+      <span class="tag">Южно-Сахалинск · с 2016 года</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЧАСТЬ 1: О СЕБЕ ============ -->
+<section class="block" id="about" data-accent="blue">
+  <div class="wrap">
+    <div class="head reveal head--blue">
+      <div class="eyebrow">Часть 01</div>
+      <h2>Опыт, ценности и путь в профессии</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <div class="stats reveal-group">
+      <div class="stat"><div class="num"><span class="count" data-target="8">0</span></div><div class="label">лет опыта</div></div>
+      <div class="stat"><div class="num"><span class="count" data-target="120">0</span><sup>+</sup></div><div class="label">учеников</div></div>
+      <div class="stat"><div class="num"><span class="count" data-target="34">0</span></div><div class="label">выставки и мероприятия</div></div>
+      <div class="stat"><div class="num"><span class="count" data-target="6">0</span></div><div class="label">программ обучения</div></div>
+    </div>
+
+    <div class="about-cols reveal">
+      <div>
+        <h3>Опыт работы</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+      </div>
+      <div>
+        <h3>О себе</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt, neque porro quisquam est.</p>
+      </div>
+    </div>
+
+    <div class="values reveal-group">
+      <div class="value"><div class="n">01</div><h4>Индивидуальный подход</h4><p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.</p></div>
+      <div class="value"><div class="n">02</div><h4>Честная обратная связь</h4><p>Ut enim ad minim veniam quis nostrud exercitation ullamco laboris.</p></div>
+      <div class="value"><div class="n">03</div><h4>Насмотренность и вкус</h4><p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p></div>
+      <div class="value"><div class="n">04</div><h4>Дисциплина через интерес</h4><p>Excepteur sint occaecat cupidatat non proident sunt in culpa.</p></div>
+    </div>
+
+    <div class="eyebrow" style="margin-bottom:18px;">Личные работы и я в профессии</div>
+    <div class="gallery reveal-group">
+      <figure>
+        <div class="ph" style="--ar:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg>
+          <div class="ph-label">ФОТО: личная работа —<br>натюрморт, масло</div>
+        </div>
+        <figcaption><b>01.</b> Из личной серии, 2024</figcaption>
+      </figure>
+      <figure>
+        <div class="ph" style="--ar:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg>
+          <div class="ph-label">ФОТО: личная работа —<br>портрет, графит</div>
+        </div>
+        <figcaption><b>02.</b> Учебный рисунок</figcaption>
+      </figure>
+      <figure>
+        <div class="ph" style="--ar:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l4-9 4 5 3-7 5 11z"/></svg>
+          <div class="ph-label">ФОТО: я на групповой<br>выставке</div>
+        </div>
+        <figcaption><b>03.</b> Открытие выставки, галерея, 2023</figcaption>
+      </figure>
+      <figure>
+        <div class="ph" style="--ar:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg>
+          <div class="ph-label">ФОТО: работа —<br>эскизы композиции</div>
+        </div>
+        <figcaption><b>04.</b> Рабочие эскизы</figcaption>
+      </figure>
+      <figure>
+        <div class="ph" style="--ar:4/3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l1.6 4.9H19l-4.2 3 1.6 4.9L12 12l-4.4 2.8 1.6-4.9L5 6.9h5.4z"/></svg>
+          <div class="ph-label">ФОТО: за работой<br>в студии, за мольбертом</div>
+        </div>
+        <figcaption><b>05.</b> В процессе, мастерская</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЧАСТЬ 2: СТУДИЯ / ПАПКИ ============ -->
+<section class="block" id="studio" data-accent="red">
+  <div class="wrap">
+    <div class="head reveal head--red">
+      <div class="eyebrow">Часть 02</div>
+      <h2>Процесс работы в студии</h2>
+      <p>Фотографии разложены по папкам — рабочий процесс, общие мероприятия и работы учеников. Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+
+    <div class="folder-nav" role="tablist" aria-label="Папки с фотографиями">
+      <button class="folder-btn active" data-folder="process">📁 01 · Рабочий процесс</button>
+      <button class="folder-btn" data-folder="events">📁 02 · Общие мероприятия</button>
+      <button class="folder-btn" data-folder="works">📁 03 · Работы учеников</button>
+    </div>
+
+    <div class="folder-panel reveal">
+      <div class="folder-grid active" data-folder-panel="process">
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l1.6 4.9H19l-4.2 3 1.6 4.9L12 12l-4.4 2.8 1.6-4.9L5 6.9h5.4z"/></svg><div class="ph-label">ФОТО: постановка<br>натюрморта перед занятием</div></div>
+          <figcaption>Подготовка постановки — сентябрь 2025</figcaption>
+        </figure>
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l1.6 4.9H19l-4.2 3 1.6 4.9L12 12l-4.4 2.8 1.6-4.9L5 6.9h5.4z"/></svg><div class="ph-label">ФОТО: разбор ошибок<br>у мольберта</div></div>
+          <figcaption>Индивидуальный разбор работы</figcaption>
+        </figure>
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l1.6 4.9H19l-4.2 3 1.6 4.9L12 12l-4.4 2.8 1.6-4.9L5 6.9h5.4z"/></svg><div class="ph-label">ФОТО: групповое занятие,<br>рисунок с натуры</div></div>
+          <figcaption>Групповая постановка, поток «Начинающие»</figcaption>
+        </figure>
+      </div>
+
+      <div class="folder-grid" data-folder-panel="events">
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l4-9 4 5 3-7 5 11z"/></svg><div class="ph-label">ФОТО: итоговая выставка<br>работ учеников</div></div>
+          <figcaption>Итоговая выставка потока — декабрь 2025</figcaption>
+        </figure>
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l4-9 4 5 3-7 5 11z"/></svg><div class="ph-label">ФОТО: выездной пленэр,<br>группа на природе</div></div>
+          <figcaption>Пленэр за городом — весенний выезд</figcaption>
+        </figure>
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l4-9 4 5 3-7 5 11z"/></svg><div class="ph-label">ФОТО: вечер «картина<br>+ бокал вина»</div></div>
+          <figcaption>Творческий вечер для взрослых</figcaption>
+        </figure>
+      </div>
+
+      <div class="folder-grid" data-folder-panel="works">
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg><div class="ph-label">ФОТО: работа ученика —<br>натюрморт, гуашь</div></div>
+          <figcaption>Ученик, 11 лет — натюрморт</figcaption>
+        </figure>
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg><div class="ph-label">ФОТО: работа ученика —<br>портрет, карандаш</div></div>
+          <figcaption>Ученица, 16 лет — портрет</figcaption>
+        </figure>
+        <figure>
+          <div class="ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg><div class="ph-label">ФОТО: работа ученика —<br>композиция, акрил</div></div>
+          <figcaption>Ученик, 27 лет — итоговая композиция</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЧАСТЬ 3: ДОСТИЖЕНИЯ УЧЕНИКОВ ============ -->
+<section class="block" id="students" data-accent="green">
+  <div class="wrap">
+    <div class="head reveal head--green">
+      <div class="eyebrow">Часть 03</div>
+      <h2>Достижения учеников</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Три примера того, как менялась работа ученика от первого занятия до результата.</p>
+    </div>
+
+    <div class="student-card reveal">
+      <div class="student-top">
+        <div class="avatar ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M4 20c1.5-4 4.8-6 8-6s6.5 2 8 6"/></svg></div>
+        <div class="student-id">
+          <h4>Имя Фамилия</h4>
+          <span>Ученица</span>
+        </div>
+        <div class="student-meta">
+          <div>Возраст<strong>13 лет</strong></div>
+          <div>Период<strong>8 месяцев</strong></div>
+          <div>Задача<strong>Поступление в художественную школу</strong></div>
+        </div>
+      </div>
+      <div class="student-body">
+        <div>
+          <p><b style="color:var(--ink);font-weight:500;">Задача:</b> lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+          <p><b style="color:var(--ink);font-weight:500;">Результат:</b> ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="before-after">
+          <div class="ph" style="--ar:1/1;flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div class="ph-label">ФОТО «ДО»<br>первое занятие</div></div>
+          <span class="arrow">→</span>
+          <div class="ph" style="--ar:1/1;flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div class="ph-label">ФОТО «ПОСЛЕ»<br>итоговая работа</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="student-card reveal">
+      <div class="student-top">
+        <div class="avatar ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M4 20c1.5-4 4.8-6 8-6s6.5 2 8 6"/></svg></div>
+        <div class="student-id">
+          <h4>Имя Фамилия</h4>
+          <span>Ученик</span>
+        </div>
+        <div class="student-meta">
+          <div>Возраст<strong>9 лет</strong></div>
+          <div>Период<strong>4 месяца</strong></div>
+          <div>Задача<strong>Развивающие занятия</strong></div>
+        </div>
+      </div>
+      <div class="student-body">
+        <div>
+          <p><b style="color:var(--ink);font-weight:500;">Задача:</b> duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          <p><b style="color:var(--ink);font-weight:500;">Результат:</b> excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim.</p>
+        </div>
+        <div class="before-after">
+          <div class="ph" style="--ar:1/1;flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div class="ph-label">ФОТО «ДО»<br>первое занятие</div></div>
+          <span class="arrow">→</span>
+          <div class="ph" style="--ar:1/1;flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div class="ph-label">ФОТО «ПОСЛЕ»<br>итоговая работа</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="student-card reveal">
+      <div class="student-top">
+        <div class="avatar ph" style="--ar:1/1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M4 20c1.5-4 4.8-6 8-6s6.5 2 8 6"/></svg></div>
+        <div class="student-id">
+          <h4>Имя Фамилия</h4>
+          <span>Ученица</span>
+        </div>
+        <div class="student-meta">
+          <div>Возраст<strong>34 года</strong></div>
+          <div>Период<strong>6 месяцев</strong></div>
+          <div>Задача<strong>Композиция для взрослых</strong></div>
+        </div>
+      </div>
+      <div class="student-body">
+        <div>
+          <p><b style="color:var(--ink);font-weight:500;">Задача:</b> nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia.</p>
+          <p><b style="color:var(--ink);font-weight:500;">Результат:</b> consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam.</p>
+        </div>
+        <div class="before-after">
+          <div class="ph" style="--ar:1/1;flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div class="ph-label">ФОТО «ДО»<br>первое занятие</div></div>
+          <span class="arrow">→</span>
+          <div class="ph" style="--ar:1/1;flex:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div class="ph-label">ФОТО «ПОСЛЕ»<br>итоговая работа</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЧАСТЬ 4: ПРОГРАММЫ ============ -->
+<section class="block" id="programs" data-accent="blue">
+  <div class="wrap">
+    <div class="head reveal head--blue">
+      <div class="eyebrow">Часть 04</div>
+      <h2>Программы обучения</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</p>
+    </div>
+
+    <div class="programs reveal-group">
+      <div class="program">
+        <div class="n">01</div>
+        <h3>Подготовка к поступлению</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam quis nostrud exercitation.</p>
+        <div class="meta"><span>Формат: очно/онлайн</span><span>От 6 мес.</span></div>
+      </div>
+      <div class="program">
+        <div class="n">02</div>
+        <h3>Развивающие занятия для детей</h3>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <div class="meta"><span>Возраст: 6–12 лет</span><span>Группа/индивид.</span></div>
+      </div>
+      <div class="program">
+        <div class="n">03</div>
+        <h3>Выездные мероприятия</h3>
+        <p>Пленэры, тематические вечера «картина и бокал вина», творческие выезды. Excepteur sint occaecat cupidatat.</p>
+        <div class="meta"><span>Формат: выезд</span><span>По выходным</span></div>
+      </div>
+      <div class="program">
+        <div class="n">04</div>
+        <h3>Живопись для взрослых</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        <div class="meta"><span>Формат: индивид.</span><span>От 3 мес.</span></div>
+      </div>
+      <div class="program">
+        <div class="n">05</div>
+        <h3>Композиция и теория</h3>
+        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec.</p>
+        <div class="meta"><span>Формат: онлайн</span><span>От 2 мес.</span></div>
+      </div>
+      <div class="program">
+        <div class="n">06</div>
+        <h3>Индивидуальный интенсив</h3>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur.</p>
+        <div class="meta"><span>Формат: очно</span><span>2 недели</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЧАСТЬ 5: КОНТАКТЫ ============ -->
+<section class="block" id="contact" data-accent="red">
+  <div class="wrap">
+    <div class="head reveal head--red">
+      <div class="eyebrow">Часть 05</div>
+      <h2>Контактная информация</h2>
+      <p>Оставьте заявку — и я свяжусь с вами, чтобы договориться о пробном занятии.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div>
+        <ul class="contact-list">
+          <li><span>ФИО</span><span>Погорелова Анастасия Сергеевна</span></li>
+          <li><span>Телефон</span><span>+7 (000) 000-00-00</span></li>
+          <li><span>Email</span><span>hello@example.com</span></li>
+          <li><span>Студия</span><span>Южно-Сахалинск, ул. Примерная, 10</span></li>
+          <li><span>Часы работы</span><span>Пн–Сб, 10:00–20:00</span></li>
+        </ul>
+        <div class="eyebrow" style="margin-bottom:14px;">Соцсети</div>
+        <div class="social-row">
+          <a href="#" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 3L2.5 10.6l6.2 2.4M21.5 3L15 20.5l-6.3-7.5M21.5 3L8.7 13"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".8" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="VK">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M8 8l4 8 4-8"/></svg>
+          </a>
+        </div>
+      </div>
+      <form onsubmit="return false;">
+        <div>
+          <label for="f-name">Имя</label>
+          <input id="f-name" type="text" placeholder="Как к вам обращаться">
+        </div>
+        <div>
+          <label for="f-phone">Телефон или почта</label>
+          <input id="f-phone" type="text" placeholder="Для связи">
+        </div>
+        <div>
+          <label for="f-msg">Сообщение</label>
+          <textarea id="f-msg" placeholder="Расскажите о цели занятий"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;border:none;cursor:pointer;">Отправить заявку →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;width:100%;">
+    <span style="display:flex;align-items:center;gap:12px;">
+      © 2026 Анастасия Погорелова · Мастерская рисунка
+      <svg class="signature footer-signature" viewBox="0 0 220 60" width="90" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 42 C 26 12, 42 54, 60 26 S 92 6, 112 34 S 148 54, 168 20 C 182 4, 198 14, 214 28"/>
+      </svg>
+    </span>
+    <span>Макет-визитка · демонстрационный текст и фото-плейсхолдеры</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</script>
+</body>
+</html>
