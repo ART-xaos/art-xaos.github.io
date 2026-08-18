@@ -120,3 +120,35 @@
       tabs.classList.remove('open');
     });
   });
+
+  // отправка заявки на почту через Formspree
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('form-submit-btn');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправляю…';
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('bad response');
+        statusEl.textContent = 'Спасибо! Заявка отправлена, скоро свяжусь с вами.';
+        statusEl.classList.add('form-status--ok');
+        contactForm.reset();
+      } catch (err) {
+        statusEl.innerHTML = 'Не получилось отправить автоматически. Напишите, пожалуйста, напрямую: <a href="mailto:art.xaos.studio@gmail.com">art.xaos.studio@gmail.com</a>';
+        statusEl.classList.add('form-status--error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  }

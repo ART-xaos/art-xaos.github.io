@@ -239,12 +239,23 @@
 
   /* ---------- PROGRAMS ---------- */
   .programs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .programs--pricing{grid-template-columns:repeat(2,1fr);}
   .program{background:var(--white);padding:32px 26px;display:flex;flex-direction:column;}
   .program .n{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--red);}
   .program h3{font-size:1.15rem;margin:14px 0 10px;}
   .program p{color:var(--ink-soft);font-size:.9rem;flex:1;}
   .program .meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:14px;margin-top:16px;text-transform:uppercase;letter-spacing:.04em;}
+  .price-list{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line);}
+  .price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .price-list li span:first-child{color:var(--ink-soft);font-size:.85rem;}
+  .price-list li span:last-child{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--ink);white-space:nowrap;}
   @media(max-width:880px){.programs{grid-template-columns:1fr;}}
+
+  /* ---------- НАГРАДЫ ---------- */
+  .awards-list{list-style:none;padding:0;margin:0 0 54px;display:grid;gap:14px;}
+  .awards-list li{padding-left:26px;position:relative;color:var(--ink-soft);font-size:.92rem;line-height:1.5;}
+  .awards-list li::before{content:"";position:absolute;left:0;top:.6em;width:16px;height:1px;background:var(--red);}
+  .awards-list li b{color:var(--ink);font-weight:500;}
 
   /* ---------- CONTACT ---------- */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
@@ -260,14 +271,21 @@
   }
   .social-row a svg{width:18px;height:18px;}
   .social-row a:hover{background:var(--ink);color:var(--paper);}
-  form{display:flex;flex-direction:column;gap:14px;}
-  form label{font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);}
+  form{display:flex;flex-direction:column;gap:16px;}
+  form > div{display:flex;flex-direction:column;}
+  form label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:8px;}
   form input,form textarea{
+    width:100%;
     font-family:'Inter',sans-serif;font-size:.95rem;padding:12px 14px;
     border:1px solid var(--line);background:var(--white);border-radius:var(--radius);
     color:var(--ink);
   }
   form textarea{resize:vertical;min-height:90px;}
+  .form-status{font-family:'JetBrains Mono',monospace;font-size:.78rem;margin:2px 0 0;color:var(--ink-soft);min-height:1.3em;line-height:1.5;}
+  .form-status--ok{color:var(--green);}
+  .form-status--error{color:var(--red);}
+  .form-status a{color:inherit;}
+  form button:disabled{opacity:.55;cursor:not-allowed;}
   @media(max-width:880px){.contact-grid{grid-template-columns:1fr;}}
 
   footer{
