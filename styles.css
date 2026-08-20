@@ -101,10 +101,11 @@
   .burger span{display:block;width:18px;height:1.5px;background:var(--ink);margin:4px auto;}
 
   @media(max-width:880px){
-    .tabs{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;height:auto;border-bottom:1px solid var(--line);
+    .tabs{position:fixed;top:64px;right:16px;left:auto;width:min(240px,80vw);background:var(--white);flex-direction:column;height:auto;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 28px rgba(38,32,25,.14);overflow:hidden;
       transform:translateY(-8px);opacity:0;pointer-events:none;transition:.2s;}
     .tabs.open{transform:translateY(0);opacity:1;pointer-events:auto;}
-    .tabs a{height:52px;border-bottom:1px solid var(--line);padding:0 28px;}
+    .tabs a{height:52px;border-bottom:1px solid var(--line);padding:0 20px;}
+    .tabs li:last-child a{border-bottom:none;}
     .burger{display:block;}
   }
 
@@ -181,8 +182,11 @@
   .stat .num{font-family:'Fraunces',serif;font-size:2.5rem;line-height:1;display:flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums;}
   .stat .num sup{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--red);top:-.9em;}
   .stat .label{font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-top:9px;}
-  @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:420px){.stats{grid-template-columns:1fr;}}
+  @media(max-width:700px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat{text-align:center;}
+    .stat .num{justify-content:center;}
+  }
 
   .values{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:54px;}
   .value{background:var(--white);padding:26px 22px;position:relative;overflow:hidden;z-index:0;}
@@ -200,6 +204,9 @@
     .values{grid-template-columns:repeat(2,1fr);}
     .gallery{grid-template-columns:repeat(2,1fr);}
     .gallery figure:nth-child(1),.gallery figure:nth-child(4){grid-column:span 2;}
+  }
+  @media(max-width:600px){
+    .values{grid-template-columns:1fr;}
   }
 
   /* ---------- STUDIO / FOLDER TABS ---------- */
