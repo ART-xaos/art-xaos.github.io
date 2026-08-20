@@ -101,10 +101,11 @@
   .burger span{display:block;width:18px;height:1.5px;background:var(--ink);margin:4px auto;}
 
   @media(max-width:880px){
-    .tabs{position:fixed;top:64px;right:16px;left:auto;width:min(240px,80vw);background:var(--white);flex-direction:column;height:auto;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 28px rgba(38,32,25,.14);overflow:hidden;
+    .tabs{position:fixed;top:64px;right:16px;left:auto;width:max-content;max-width:80vw;min-width:200px;background:var(--white);flex-direction:column;height:auto;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 28px rgba(38,32,25,.14);overflow:hidden;
       transform:translateY(-8px);opacity:0;pointer-events:none;transition:.2s;}
     .tabs.open{transform:translateY(0);opacity:1;pointer-events:auto;}
-    .tabs a{height:52px;border-bottom:1px solid var(--line);padding:0 20px;}
+    .tabs li{width:100%;}
+    .tabs a{height:52px;width:100%;box-sizing:border-box;border-bottom:1px solid var(--line);padding:0 20px;white-space:nowrap;}
     .tabs li:last-child a{border-bottom:none;}
     .burger{display:block;}
   }
