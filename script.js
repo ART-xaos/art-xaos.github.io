@@ -152,3 +152,26 @@
       }
     });
   }
+
+  // полоска прогресса прокрутки + кнопка «наверх»
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const toTopBtn = document.getElementById('to-top');
+  function updateScrollUi() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = progress + '%';
+    if (toTopBtn) toTopBtn.classList.toggle('visible', scrollTop > 500);
+  }
+  window.addEventListener('scroll', updateScrollUi, { passive: true });
+  updateScrollUi();
+
+  if (toTopBtn) {
+    toTopBtn.addEventListener('click', () => {
+      if (prefersReducedMotion) {
+        window.scrollTo(0, 0);
+      } else {
+        smoothScrollTo(0, 1200);
+      }
+    });
+  }

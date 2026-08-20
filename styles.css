@@ -271,6 +271,8 @@
   .contact-list li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px;}
   .contact-list li span:first-child{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
   .contact-list li span:last-child{font-family:'Fraunces',serif;font-size:1.05rem;}
+  .contact-list li span:last-child a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .15s;}
+  .contact-list li span:last-child a:hover{border-color:var(--ink);}
   .social-row{display:flex;gap:10px;}
   .social-row a{
     width:40px;height:40px;border:1px solid var(--ink);border-radius:50%;
@@ -284,7 +286,7 @@
   form label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:8px;}
   form input,form textarea{
     width:100%;
-    font-family:'Inter',sans-serif;font-size:.95rem;padding:12px 14px;
+    font-family:'Inter',sans-serif;font-size:16px;padding:12px 14px;
     border:1px solid var(--line);background:var(--white);border-radius:var(--radius);
     color:var(--ink);
   }
@@ -399,4 +401,35 @@
   }
   @media (prefers-reduced-motion: reduce){
     .stat::before,.value::before{transition:none;}
+  }
+
+  /* ---------- ПОЛОСКА ПРОГРЕССА ПРОКРУТКИ ---------- */
+  .scroll-progress{
+    position:fixed;top:0;left:0;right:0;height:3px;
+    z-index:120;background:transparent;pointer-events:none;
+  }
+  .scroll-progress-bar{
+    height:100%;width:0%;
+    background:var(--red);
+    transition:width .08s linear;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scroll-progress-bar{transition:none;}
+  }
+
+  /* ---------- КНОПКА «НАВЕРХ» ---------- */
+  .to-top{
+    position:fixed;right:20px;bottom:20px;z-index:120;
+    width:46px;height:46px;border-radius:50%;
+    background:var(--ink);color:var(--paper);border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(38,32,25,.22);
+    opacity:0;transform:translateY(12px);pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease, background .15s ease;
+  }
+  .to-top svg{width:20px;height:20px;}
+  .to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .to-top:hover{background:var(--red);}
+  @media (prefers-reduced-motion: reduce){
+    .to-top{transition:opacity .01s linear;}
   }
