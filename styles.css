@@ -177,14 +177,15 @@
 
   /* ---------- СЧЁТЧИКИ-ЦИФРЫ ---------- */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:52px;}
-  .stat{background:var(--white);padding:28px 22px;}
+  .stat{background:var(--white);padding:28px 22px;position:relative;overflow:hidden;z-index:0;}
   .stat .num{font-family:'Fraunces',serif;font-size:2.5rem;line-height:1;display:flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums;}
   .stat .num sup{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--red);top:-.9em;}
   .stat .label{font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-top:9px;}
   @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:420px){.stats{grid-template-columns:1fr;}}
 
   .values{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:54px;}
-  .value{background:var(--white);padding:26px 22px;}
+  .value{background:var(--white);padding:26px 22px;position:relative;overflow:hidden;z-index:0;}
   .value .n{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:.75rem;}
   .value h4{font-size:1rem;margin:12px 0 8px;}
   .value p{font-size:.88rem;color:var(--ink-soft);margin:0;}
@@ -246,7 +247,7 @@
   .program p{color:var(--ink-soft);font-size:.9rem;flex:1;}
   .program .meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:14px;margin-top:16px;text-transform:uppercase;letter-spacing:.04em;}
   .price-list{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line);}
-  .price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .price-list li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px;padding:9px 0;border-bottom:1px solid var(--line);}
   .price-list li span:first-child{color:var(--ink-soft);font-size:.85rem;}
   .price-list li span:last-child{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--ink);white-space:nowrap;}
   @media(max-width:880px){.programs{grid-template-columns:1fr;}}
@@ -343,7 +344,52 @@
     transition:stroke-dashoffset 1.5s ease .3s;
   }
   .signature.in-view path{stroke-dashoffset:0;}
-  .hero-signature{margin-top:34px;display:flex;align-items:center;gap:12px;}
+  .hero-signature{margin-top:34px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
   .hero-signature span{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-soft);letter-spacing:.04em;text-transform:uppercase;}
   .footer-signature{color:var(--ink-soft);}
   .footer-signature path{stroke-dasharray:520;stroke-dashoffset:0;}
+
+  /* ---------- ЗАЛИВКА ЦВЕТОМ ПРИ НАВЕДЕНИИ (программы, заголовки секций) ---------- */
+  .text-fill{
+    display:inline-block;
+    background-image:linear-gradient(90deg, var(--red) 50%, var(--ink) 50%);
+    background-size:200% 100%;
+    background-position:100% 0;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    transition:background-position .5s ease;
+    width:fit-content;
+  }
+  .head h2{transition:color .4s ease;}
+  @media (hover:hover) and (pointer:fine){
+    .program:hover h3.text-fill{background-position:0 0;}
+    .head:hover h2{color:var(--red);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .text-fill,.head h2{transition:none;}
+  }
+
+  /* ---------- ЗАЛИВКА ФОНА ПРИ НАВЕДЕНИИ (счётчики, ценности) ---------- */
+  .stat::before,.value::before{
+    content:"";
+    position:absolute;inset:0;
+    background:var(--red);
+    transform:scaleY(0);
+    transform-origin:bottom;
+    transition:transform .4s ease;
+    z-index:-1;
+  }
+  .stat .num,.stat .label,.stat .num sup,
+  .value .n,.value h4,.value p{
+    position:relative;z-index:1;
+    transition:color .3s ease;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .stat:hover::before,.value:hover::before{transform:scaleY(1);}
+    .stat:hover .num,.stat:hover .label,.stat:hover .num sup,
+    .value:hover .n,.value:hover h4,.value:hover p{color:var(--paper);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .stat::before,.value::before{transition:none;}
+  }
