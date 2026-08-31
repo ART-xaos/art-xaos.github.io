@@ -1,0 +1,83 @@
+.about-wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 55% 40% at 5% 2%, rgba(46,67,116,.2), transparent 70%),radial-gradient(ellipse 48% 40% at 95% 55%, rgba(180,67,42,.16), transparent 72%);}
+.about-hero,.about-section{position:relative;z-index:2;}
+.about-hero{padding:88px 0 76px;}
+.about-hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+.about-hero h1{max-width:13ch;margin:18px 0 20px;font-size:clamp(2.4rem,5vw,4.4rem);line-height:1.02;}
+.about-hero h1 em{color:var(--red);font-style:italic;}
+.about-hero__lede{max-width:58ch;margin:0 0 30px;color:var(--ink-soft);font-size:1.06rem;}
+.about-hero__photo{margin:0;transform:rotate(1.5deg);}
+.about-hero__photo img{width:100%;aspect-ratio:4/5;border:10px solid var(--white);box-shadow:0 18px 42px rgba(38,32,25,.16);object-fit:cover;}
+.about-hero__photo figcaption{margin-top:13px;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.7rem;text-align:right;}
+.about-section{padding:76px 0;border-top:1px solid var(--line);}
+.section-heading{max-width:680px;margin-bottom:40px;}
+.section-heading h2{margin-top:14px;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.1;}
+.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:0;background:var(--line);border:1px solid var(--line);}
+.facts-grid div{padding:28px 22px;background:var(--white);}
+.facts-grid dt{font-family:'Spectral',serif;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1;}
+.facts-grid dd{margin:10px 0 0;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;}
+.two-columns{display:grid;grid-template-columns:.85fr 1.15fr;gap:76px;align-items:start;}
+.two-columns .section-heading{margin:0;}
+.prose{max-width:62ch;color:var(--ink-soft);}
+.prose p{margin:0;}
+.prose p+p{margin-top:18px;}
+.awards{display:grid;gap:0;max-width:880px;margin:0;padding:0;list-style:none;border-top:1px solid var(--line);}
+.awards li{display:grid;grid-template-columns:90px 1fr;gap:22px;padding:22px 0;border-bottom:1px solid var(--line);}
+.awards span{color:var(--red);font-family:'JetBrains Mono',monospace;font-size:.76rem;}
+.awards p{margin:0;color:var(--ink-soft);}
+.awards strong{color:var(--ink);font-weight:600;}
+.teacher-section{background:rgba(250,247,240,.55);}
+.teaching-awards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.teaching-award{display:flex;flex-direction:column;min-height:294px;padding:24px;border:1px solid var(--line);background:var(--white);box-shadow:0 8px 20px rgba(38,32,25,.04);transition:transform .2s ease,box-shadow .2s ease;}
+.teaching-award:hover{box-shadow:0 14px 30px rgba(38,32,25,.1);transform:translateY(-3px);}
+.teaching-award--featured{grid-column:span 2;background:var(--ink);color:var(--paper);}
+.teaching-award--accent{background:var(--red);border-color:var(--red);color:var(--white);}
+.teaching-award__top{display:flex;align-items:start;justify-content:space-between;gap:12px;}
+.document-type{color:var(--red-text);font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;}
+.teaching-award time{color:var(--ink-soft);font-family:'Spectral',serif;font-size:1.2rem;line-height:1;}
+.teaching-award h3{margin:34px 0 12px;font-size:1.3rem;line-height:1.12;}
+.teaching-award p{margin:0;color:var(--ink-soft);font-size:.9rem;line-height:1.55;}
+.teaching-award footer{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.03em;text-transform:uppercase;}
+.teaching-award--featured h3,.teaching-award--accent h3{color:inherit;}
+.teaching-award--featured p,.teaching-award--accent p{color:inherit;opacity:.78;}
+.teaching-award--featured .document-type,.teaching-award--accent .document-type{color:inherit;opacity:.68;}
+.teaching-award--featured time,.teaching-award--accent time,.teaching-award--featured footer,.teaching-award--accent footer{color:inherit;opacity:.7;}
+.teaching-award--featured footer,.teaching-award--accent footer{border-top-color:currentColor;}
+.section-heading--row{display:flex;align-items:end;justify-content:space-between;gap:28px;max-width:none;}
+.section-heading--row p{max-width:44ch;margin:0;color:var(--ink-soft);}
+.work-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.work-gallery figure{margin:0;}
+.work-gallery__large{grid-row:span 2;}
+.work-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);}
+.work-gallery__large img{height:100%;aspect-ratio:auto;}
+.work-gallery figcaption{margin-top:9px;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.7rem;}
+.work-gallery figcaption b{color:var(--red);font-weight:500;}
+.about-section--closing{padding:36px 0;background:var(--paper-2);}
+.closing{display:grid;grid-template-columns:1.1fr .9fr auto;gap:40px;align-items:center;}
+.closing h2{max-width:18ch;margin-top:14px;font-size:clamp(1.6rem,3vw,2.35rem);line-height:1.12;}
+.closing p{max-width:42ch;margin:0;color:var(--ink-soft);}
+.footer-content{display:flex;justify-content:space-between;width:100%;gap:14px;}
+@media(max-width:880px){
+  .about-hero{padding:62px 0;}
+  .about-hero__grid,.two-columns,.closing{grid-template-columns:1fr;gap:34px;}
+  .facts-grid{grid-template-columns:repeat(2,1fr);}
+  .section-heading--row{display:block;}
+  .section-heading--row p{margin-top:16px;}
+  .work-gallery{grid-template-columns:repeat(2,1fr);}
+  .work-gallery__large{grid-row:auto;grid-column:span 2;}
+  .work-gallery__large img{aspect-ratio:16/9;}
+  .teaching-awards{grid-template-columns:repeat(2,1fr);}
+  .teaching-award--featured{grid-column:span 2;}
+}
+@media(max-width:600px){
+  .about-hero h1{font-size:clamp(2.2rem,12vw,3.2rem);}
+  .about-section{padding:58px 0;}
+  .facts-grid{grid-template-columns:1fr;}
+  .awards li{grid-template-columns:1fr;gap:7px;}
+  .work-gallery{grid-template-columns:1fr;}
+  .work-gallery__large{grid-column:auto;}
+  .work-gallery__large img{aspect-ratio:4/3;}
+  .teaching-awards{grid-template-columns:1fr;}
+  .teaching-award,.teaching-award--featured{grid-column:auto;min-height:0;}
+  .teaching-award h3{margin-top:28px;}
+  .footer-content{flex-wrap:wrap;}
+}
