@@ -129,12 +129,11 @@
       href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/global.css?v=4" />
-    <link rel="stylesheet" href="assets/css/page-index.css?v=6" />
+    <link rel="stylesheet" href="assets/css/global.css?v=7" />
+    <link rel="stylesheet" href="assets/css/page-index.css?v=9" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Перейти к содержанию</a>
-    <div class="bg-wash" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="nav-inner">
@@ -142,7 +141,7 @@
           <img
             class="logo-mark"
             alt="Логотип ART-XAOS"
-            src="assets/images/icon-512.png"
+            src="assets/images/logo-mark.png"
           />
           <span class="logo-text"
             >ART-XAOS<small>рисунок · живопись · подготовка в вузы</small></span
@@ -179,7 +178,7 @@
 
     <main id="main-content">
       <!-- ============ HERO ============ -->
-      <section class="hero" id="top" data-accent="blue">
+      <section class="hero reveal" id="top">
         <div class="wrap hero-grid">
           <div>
             <div class="eyebrow">Мастер декоративно-прикладного искусства</div>
@@ -188,7 +187,7 @@
               15 лет в художественной сфере: работала с детьми и подростками в
               изостудиях Южно-Сахалинска и Санкт-Петербурга, готовлю к
               поступлению в художественные вузы и веду частные занятия в студии
-              «АРТ-ХАОС».
+              «ART-XAOS».
             </p>
             <div class="btn-row">
               <a href="#contact" class="btn btn-primary"
@@ -218,8 +217,12 @@
           </div>
           <div class="hero-photo">
             <div class="frame">
-              <div class="ph" style="--ar: 4/5">
-                <img src="assets/images/me/2.jpg" style="object-fit: cover" />
+              <div class="ph">
+                <img
+                  src="assets/images/me/2.jpg"
+                  alt="Портрет преподавателя"
+                  fetchpriority="high"
+                />
               </div>
             </div>
             <span class="tag">Южно-Сахалинск · 15 лет в профессии</span>
@@ -228,9 +231,9 @@
       </section>
 
       <!-- ============ ЧАСТЬ 1: О СЕБЕ ============ -->
-      <section class="block" id="about" data-accent="blue">
+      <section class="block" id="about">
         <div class="wrap">
-          <div class="head reveal head--blue">
+          <div class="head reveal">
             <div class="eyebrow">Часть 01</div>
             <h2>Опыт, ценности и путь в профессии</h2>
             <p>
@@ -240,42 +243,27 @@
             </p>
           </div>
 
-          <div
-            class="stats reveal-group"
-            style="justify-content: center; text-align: center"
-          >
+          <div class="stats reveal-group">
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="15">0</span>
               </div>
               <div class="label">лет в&nbsp;профессии</div>
             </div>
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="5">0</span>
               </div>
               <div class="label">студий и&nbsp;площадок</div>
             </div>
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="6">0</span>
               </div>
               <div class="label">дипломов и&nbsp;наград</div>
             </div>
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="2">0</span>
               </div>
               <div class="label">программы</div>
@@ -286,7 +274,7 @@
             <p>
               С 2014 года работаю с детьми, подростками и абитуриентами в
               Южно-Сахалинске и Санкт-Петербурге. С 2022 года веду студию
-              «АРТ-ХАОС» и готовлю к поступлению в художественные вузы.
+              «ART-XAOS» и готовлю к поступлению в художественные вузы.
             </p>
             <p>
               Училась у художников Петербурга, окончила бакалавриат «Дизайн
@@ -335,167 +323,217 @@
       </section>
 
       <!-- ============ ЧАСТЬ 2: СТУДИЯ ============ -->
-      <section class="block" id="studio" data-accent="red">
+      <section class="block" id="studio">
         <div class="wrap">
-          <div class="head reveal head--red">
+          <div class="head reveal">
             <div class="eyebrow">Часть 02</div>
             <h2>Процесс работы в студии</h2>
-            <p>Нажмите на фотографию, чтобы рассмотреть её полностью.</p>
+            <p>Листайте стрелками или выбирайте фото в ленте снизу.</p>
           </div>
 
-          <div class="studio-grid reveal" id="studio-grid">
-            <button
-              class="studio-tile"
-              data-tag="Рабочий процесс"
-              aria-expanded="false"
+          <div class="studio-carousel reveal" id="studio-grid">
+            <div
+              class="studio-stage"
+              id="studio-stage"
+              tabindex="0"
+              role="group"
+              aria-roledescription="карусель"
+              aria-label="Фотографии студии"
             >
               <img
-                class="studio-photo"
+                class="studio-stage__image"
+                id="studio-stage-image"
                 src="assets/images/studio/lq/8.jpg"
                 alt="Подготовка постановки — сентябрь 2025"
                 decoding="async"
+                fetchpriority="high"
               />
-              <span class="studio-tile-tag">Рабочий процесс</span>
-              <figcaption>Подготовка постановки — сентябрь 2025</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Рабочий процесс"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/3.jpg"
-                alt="Индивидуальный разбор работы"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Рабочий процесс</span>
-              <figcaption>Индивидуальный разбор работы</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Рабочий процесс"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/5.jpg"
-                alt="Групповая постановка, поток «Начинающие»"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Рабочий процесс</span>
-              <figcaption>Групповая постановка, поток «Начинающие»</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Мероприятия"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/4.jpg"
-                alt="Итоговая выставка потока"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Мероприятия</span>
-              <figcaption>Итоговая выставка потока</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Мероприятия"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/1.jpg"
-                alt="Пленэр за городом"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Мероприятия</span>
-              <figcaption>Пленэр за городом</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Мероприятия"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/6.jpg"
-                alt="Творческий вечер"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Мероприятия</span>
-              <figcaption>Творческий вечер</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Работы учеников"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/7.jpg"
-                alt="Ученик, x лет — натюрморт"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Работы учеников</span>
-              <figcaption>Ученик, x лет — натюрморт</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Работы учеников"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/2.jpg"
-                alt="Ученица, x лет — портрет"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Работы учеников</span>
-              <figcaption>Ученица, x лет — портрет</figcaption>
-            </button>
-            <button
-              class="studio-tile"
-              data-tag="Работы учеников"
-              aria-expanded="false"
-            >
-              <img
-                class="studio-photo"
-                src="assets/images/studio/lq/9.jpg"
-                alt="Ученик, x лет — итоговая композиция"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="studio-tile-tag">Работы учеников</span>
-              <figcaption>Ученик, x лет — итоговая композиция</figcaption>
-            </button>
-            <button
-              class="studio-overlay"
-              id="studio-overlay"
-              type="button"
-              hidden
-              aria-label="Закрыть просмотр фотографии"
-            >
-              <img class="studio-overlay__image" src="" alt="" />
-              <span class="studio-overlay__caption"></span>
-            </button>
+              <button
+                class="studio-nav studio-nav--prev"
+                type="button"
+                aria-label="Предыдущее фото"
+              >
+                ←
+              </button>
+              <button
+                class="studio-nav studio-nav--next"
+                type="button"
+                aria-label="Следующее фото"
+              >
+                →
+              </button>
+              <div class="studio-stage__footer">
+                <span class="studio-stage__tag" id="studio-stage-tag"
+                  >Рабочий процесс</span
+                >
+                <span class="studio-stage__caption" id="studio-stage-caption"
+                  >Подготовка постановки — сентябрь 2025</span
+                >
+              </div>
+            </div>
+
+            <div class="studio-thumbs" id="studio-thumbs">
+              <button
+                class="studio-thumb is-active"
+                type="button"
+                data-src="assets/images/studio/lq/8.jpg"
+                data-alt="Подготовка постановки — сентябрь 2025"
+                data-tag="Рабочий процесс"
+                data-caption="Подготовка постановки — сентябрь 2025"
+                aria-current="true"
+                aria-label="Фото 1 из 9: Подготовка постановки — сентябрь 2025"
+              >
+                <img
+                  src="assets/images/studio/lq/8.jpg"
+                  alt=""
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/3.jpg"
+                data-alt="Индивидуальный разбор работы"
+                data-tag="Рабочий процесс"
+                data-caption="Индивидуальный разбор работы"
+                aria-current="false"
+                aria-label="Фото 2 из 9: Индивидуальный разбор работы"
+              >
+                <img
+                  src="assets/images/studio/lq/3.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/5.jpg"
+                data-alt="Групповая постановка, поток «Начинающие»"
+                data-tag="Рабочий процесс"
+                data-caption="Групповая постановка, поток «Начинающие»"
+                aria-current="false"
+                aria-label="Фото 3 из 9: Групповая постановка, поток «Начинающие»"
+              >
+                <img
+                  src="assets/images/studio/lq/5.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/4.jpg"
+                data-alt="Итоговая выставка потока"
+                data-tag="Мероприятия"
+                data-caption="Итоговая выставка потока"
+                aria-current="false"
+                aria-label="Фото 4 из 9: Итоговая выставка потока"
+              >
+                <img
+                  src="assets/images/studio/lq/4.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/1.jpg"
+                data-alt="Пленэр за городом"
+                data-tag="Мероприятия"
+                data-caption="Пленэр за городом"
+                aria-current="false"
+                aria-label="Фото 5 из 9: Пленэр за городом"
+              >
+                <img
+                  src="assets/images/studio/lq/1.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/6.jpg"
+                data-alt="Творческий вечер"
+                data-tag="Мероприятия"
+                data-caption="Творческий вечер"
+                aria-current="false"
+                aria-label="Фото 6 из 9: Творческий вечер"
+              >
+                <img
+                  src="assets/images/studio/lq/6.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/7.jpg"
+                data-alt="Ученик, x лет — натюрморт"
+                data-tag="Работы учеников"
+                data-caption="Ученик, x лет — натюрморт"
+                aria-current="false"
+                aria-label="Фото 7 из 9: Ученик, x лет — натюрморт"
+              >
+                <img
+                  src="assets/images/studio/lq/7.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/2.jpg"
+                data-alt="Ученица, x лет — портрет"
+                data-tag="Работы учеников"
+                data-caption="Ученица, x лет — портрет"
+                aria-current="false"
+                aria-label="Фото 8 из 9: Ученица, x лет — портрет"
+              >
+                <img
+                  src="assets/images/studio/lq/2.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                class="studio-thumb"
+                type="button"
+                data-src="assets/images/studio/lq/9.jpg"
+                data-alt="Ученик, x лет — итоговая композиция"
+                data-tag="Работы учеников"
+                data-caption="Ученик, x лет — итоговая композиция"
+                aria-current="false"
+                aria-label="Фото 9 из 9: Ученик, x лет — итоговая композиция"
+              >
+                <img
+                  src="assets/images/studio/lq/9.jpg"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ============ ЧАСТЬ 3: ДОСТИЖЕНИЯ УЧЕНИКОВ ============ -->
-      <section class="block" id="students" data-accent="green">
+      <section class="block" id="students">
         <div class="wrap">
-          <div class="head reveal head--green">
+          <div class="head reveal">
             <div class="eyebrow">Часть 03</div>
             <h2>Достижения учеников</h2>
             <p>Несколько примеров того, чего добились ученики.</p>
@@ -517,12 +555,12 @@
             <div class="student-body">
               <div>
                 <p>
-                  <b style="color: var(--ink); font-weight: 500">Задача:</b>
+                  <b>Задача:</b>
                   lorem ipsum dolor sit amet consectetur adipiscing elit sed do
                   eiusmod tempor.
                 </p>
                 <p>
-                  <b style="color: var(--ink); font-weight: 500">Результат:</b>
+                  <b>Результат:</b>
                   ut enim ad minim veniam quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
@@ -534,6 +572,8 @@
                     <img
                       src="assets/images/students/awards/Иванова А. А..jpg"
                       alt="Грамота Ивановой Алевтины Александровны"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption>Диплом II степени</figcaption>
@@ -544,6 +584,8 @@
                     <img
                       src="assets/images/students/art/Иванова А. А..jpg"
                       alt="Работа Ивановой Алевтины Александровны"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption>
@@ -577,15 +619,15 @@
                 </p>
                 <p>
                   На работе изображена семья Варвары под Сахалинской сакурой:
-                  мама и папа, Варя и два младших брата - Лёша и Денис, так же
-                  их любимые питомцы, кошки Мошка и Дымка, бегущие по извилистой
-                  тропинке девочки в узорчатых платьях, которые дружно держаться
+                  мама и папа, Варя и два младших брата — Лёша и Денис, также их
+                  любимые питомцы, кошки Мошка и Дымка, бегущие по извилистой
+                  тропинке девочки в узорчатых платьях, которые дружно держатся
                   за руки, и множество смешных смайликов с разными эмоциями,
                   олицетворяющих народ и его сплочённость.
                 </p>
                 <p>
                   В своей работе Варя демонстрирует любовь к ближнему, которая
-                  связывает всех нас с друг другом, а также что семья - это
+                  связывает всех нас друг с другом, а также что семья — это
                   самое дорогое, что есть у каждого человека.
                 </p>
               </div>
@@ -596,6 +638,8 @@
                     <img
                       src="assets/images/students/awards/Потапова А. А..jpg"
                       alt="Грамота Потаповой Анастасии Алексеевны"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption>Диплом</figcaption>
@@ -606,6 +650,8 @@
                     <img
                       src="assets/images/students/art/Потапова А. А..jpg"
                       alt="Работа Потаповой Анастасии Алексеевны"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption>«От семьи тропинка к роду и народу»</figcaption>
@@ -637,15 +683,15 @@
                 </p>
                 <p>
                   На работе изображена семья Варвары под Сахалинской сакурой:
-                  мама и папа, Варя и два младших брата - Лёша и Денис, так же
-                  их любимые питомцы, кошки Мошка и Дымка, бегущие по извилистой
-                  тропинке девочки в узорчатых платьях, которые дружно держаться
+                  мама и папа, Варя и два младших брата — Лёша и Денис, также их
+                  любимые питомцы, кошки Мошка и Дымка, бегущие по извилистой
+                  тропинке девочки в узорчатых платьях, которые дружно держатся
                   за руки, и множество смешных смайликов с разными эмоциями,
                   олицетворяющих народ и его сплочённость.
                 </p>
                 <p>
                   В своей работе Варя демонстрирует любовь к ближнему, которая
-                  связывает всех нас с друг другом, а также что семья - это
+                  связывает всех нас друг с другом, а также что семья — это
                   самое дорогое, что есть у каждого человека.
                 </p>
               </div>
@@ -656,6 +702,8 @@
                     <img
                       src="assets/images/students/awards/Иванова В. О..jpg"
                       alt="Грамота Ивановой Варвары Олеговны"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption>Диплом</figcaption>
@@ -666,6 +714,8 @@
                     <img
                       src="assets/images/students/art/Иванова В. О..jpg"
                       alt="Работа Ивановой Варвары Олеговны"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <figcaption>«От семьи тропинка к роду и народу»</figcaption>
@@ -677,9 +727,9 @@
       </section>
 
       <!-- ============ ЧАСТЬ 4: ПРОГРАММЫ ============ -->
-      <section class="block" id="programs" data-accent="blue">
+      <section class="block" id="programs">
         <div class="wrap">
-          <div class="head reveal head--blue">
+          <div class="head reveal">
             <div class="eyebrow">Часть 04</div>
             <h2>Программы обучения</h2>
             <p>
@@ -730,9 +780,9 @@
       </section>
 
       <!-- ============ ЧАСТЬ 5: КОНТАКТЫ ============ -->
-      <section class="block" id="contact" data-accent="red">
+      <section class="block" id="contact">
         <div class="wrap">
-          <div class="head reveal head--red">
+          <div class="head reveal">
             <div class="eyebrow">Часть 05</div>
             <h2>Контактная информация</h2>
             <p>
@@ -765,7 +815,7 @@
                 </li>
                 <li><span>Часы работы</span><span>Пн–Сб, 10:00–20:00</span></li>
               </ul>
-              <div class="eyebrow" style="margin-bottom: 14px">Соцсети</div>
+              <div class="eyebrow">Соцсети</div>
               <div class="social-row">
                 <a
                   href="https://t.me/ARThaosStudio"
@@ -851,7 +901,6 @@
                 type="submit"
                 class="btn btn-primary"
                 id="form-submit-btn"
-                style="align-self: flex-start; border: none; cursor: pointer"
               >
                 Отправить заявку →
               </button>
@@ -864,7 +913,7 @@
                   aria-describedby="err-consent"
                   aria-invalid="false"
                 />
-                <label for="f-consent" style="margin-bottom: auto"
+                <label for="f-consent"
                   >Я даю согласие на обработку персональных данных в
                   соответствии с
                   <a href="privacy/" target="_blank" rel="noopener"
@@ -886,18 +935,8 @@
     </main>
 
     <footer class="site-footer">
-      <div
-        class="wrap"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 14px;
-          width: 100%;
-        "
-      >
-        <span style="display: flex; align-items: center; gap: 12px">
+      <div class="wrap footer-content">
+        <span class="footer-brand">
           © 2026 ART-XAOS · студия рисунка и живописи
           <svg
             class="signature footer-signature"
@@ -938,7 +977,7 @@
       </svg>
     </button>
 
-    <script src="assets/js/global.js?v=2"></script>
-    <script src="assets/js/page-index.js?v=5"></script>
+    <script src="assets/js/global.js?v=3"></script>
+    <script src="assets/js/page-index.js?v=7"></script>
   </body>
 </html>

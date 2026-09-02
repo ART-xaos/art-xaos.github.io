@@ -43,18 +43,21 @@
       href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/css/global.css?v=3" />
-    <link rel="stylesheet" href="../assets/css/page-about.css" />
-    <link rel="stylesheet" href="../assets/css/page-index.css" />
+    <link rel="stylesheet" href="../assets/css/global.css?v=7" />
+    <link rel="stylesheet" href="../assets/css/page-about.css?v=2" />
+    <link rel="stylesheet" href="../assets/css/page-index.css?v=9" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Перейти к содержанию</a>
-    <div class="about-wash" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="nav-inner">
         <a href="../" class="logo" aria-label="ART-XAOS — главная">
-          <img class="logo-mark" src="../assets/images/icon-512.png" />
+          <img
+            class="logo-mark"
+            alt="Логотип ART-XAOS"
+            src="../assets/images/logo-mark.png"
+          />
           <span class="logo-text"
             >ART-XAOS<small>рисунок · живопись · подготовка в вузы</small></span
           >
@@ -92,7 +95,7 @@
 
     <main id="main-content">
       <section class="about-hero">
-        <div class="wrap about-hero__grid">
+        <div class="wrap about-hero__grid reveal">
           <div>
             <div class="eyebrow">О преподавателе</div>
             <h1>
@@ -109,6 +112,7 @@
               src="../assets/images/cats/cat (1).png"
               alt="Подготовка постановки в студии ART-XAOS"
               decoding="async"
+              fetchpriority="high"
             />
             <figcaption>
               Южно-Сахалинск · преподавание и личная практика
@@ -118,47 +122,32 @@
       </section>
 
       <section class="about-section" aria-labelledby="facts-title">
-        <div class="wrap">
+        <div class="wrap reveal">
           <div class="section-heading">
             <div class="eyebrow">Опыт в цифрах</div>
             <h2 id="facts-title">Профессиональный путь</h2>
           </div>
-          <div
-            class="stats reveal-group"
-            style="justify-content: center; text-align: center"
-          >
+          <div class="stats reveal-group">
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="15">0</span>
               </div>
               <div class="label">лет в&nbsp;профессии</div>
             </div>
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="5">0</span>
               </div>
               <div class="label">студий и&nbsp;площадок</div>
             </div>
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="6">0</span>
               </div>
               <div class="label">дипломов и&nbsp;наград</div>
             </div>
             <div class="stat">
-              <div
-                class="num"
-                style="justify-content: center; text-align: center"
-              >
+              <div class="num">
                 <span class="count" data-target="2">0</span>
               </div>
               <div class="label">программы</div>
@@ -168,7 +157,7 @@
       </section>
 
       <section class="about-section" aria-labelledby="story-title">
-        <div class="wrap two-columns">
+        <div class="wrap two-columns reveal">
           <div class="section-heading">
             <div class="eyebrow">Образование и практика</div>
             <h2 id="story-title">От школы искусств до собственной студии</h2>
@@ -187,7 +176,7 @@
             </p>
             <p>
               С 2014 года работала с детьми и подростками в Южно-Сахалинске и
-              Санкт-Петербурге. С 2022 года веду частные занятия в «АРТ-ХАОС» и
+              Санкт-Петербурге. С 2022 года веду частные занятия в «ART-XAOS» и
               готовлю абитуриентов к поступлению в художественные вузы.
             </p>
           </div>
@@ -195,7 +184,7 @@
       </section>
 
       <section class="about-section" aria-labelledby="awards-title">
-        <div class="wrap">
+        <div class="wrap reveal">
           <div class="section-heading">
             <div class="eyebrow">Личные достижения</div>
             <h2 id="awards-title">Награды и выставки</h2>
@@ -240,7 +229,7 @@
         class="about-section teacher-section"
         aria-labelledby="teaching-awards-title"
       >
-        <div class="wrap">
+        <div class="wrap reveal">
           <div class="section-heading section-heading--row">
             <div>
               <div class="eyebrow">Достижения как преподавателя</div>
@@ -254,7 +243,7 @@
               визуальным архивом достижений.
             </p>
           </div>
-          <div class="teaching-awards">
+          <div class="teaching-awards reveal-group">
             <article class="teaching-award teaching-award--featured">
               <div class="teaching-award__top">
                 <span class="document-type">Сертификат</span
@@ -334,7 +323,7 @@
               </div>
               <h3>ARCH PACIFIC · «Параллели»</h3>
               <p>
-                Диплом преподавателя студии «АРТ-ХАОС» за высокую художественную
+                Диплом преподавателя студии «ART-XAOS» за высокую художественную
                 подготовку учеников-призёров 28-й международной
                 выставки-конкурса архитектурно-дизайнерского творчества
                 молодёжи.
@@ -348,7 +337,7 @@
       </section>
 
       <section class="about-section" aria-labelledby="gallery-title">
-        <div class="wrap">
+        <div class="wrap reveal-group">
           <div class="section-heading section-heading--row">
             <div>
               <div class="eyebrow">Практика</div>
@@ -359,12 +348,13 @@
               студии. Галерея использует изображения, уже добавленные в проект.
             </p>
           </div>
-          <div class="work-gallery">
-            <figure class="work-gallery__large">
+          <div class="work-gallery reveal-group">
+            <figure>
               <img
                 src="../assets/images/art/1.jpg"
                 alt="Интерьер"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption><b>01.</b> Интерьер</figcaption>
             </figure>
@@ -373,6 +363,7 @@
                 src="../assets/images/art/2.jpg"
                 alt="Вступительная работа"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption><b>02.</b> Вступительная работа</figcaption>
             </figure>
@@ -381,6 +372,7 @@
                 src="../assets/images/cats/cat (5).png"
                 alt="Пленэр за городом"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption><b>03.</b> Пленэр</figcaption>
             </figure>
@@ -389,6 +381,7 @@
                 src="../assets/images/cats/cat (8).png"
                 alt="Работа ученицы над портретом"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption><b>04.</b> Работа над портретом</figcaption>
             </figure>
@@ -402,16 +395,11 @@
             <div class="eyebrow">Подход</div>
             <h2>Индивидуальный маршрут для каждого ученика</h2>
           </div>
-          <p style="margin-top: 36px">
+          <p>
             От первых упражнений до портфолио для поступления: план строится
             вокруг цели, текущего уровня и темпа, в котором комфортно работать.
           </p>
-          <a
-            class="btn btn-ghost"
-            href="../#programs"
-            style="text-align: center; display: block; margin-top: 36px"
-            >Посмотреть программы</a
-          >
+          <a class="btn btn-ghost" href="../#programs">Посмотреть программы</a>
         </div>
       </section>
     </main>
@@ -422,7 +410,7 @@
         <span>Сайт-визитка</span>
       </div>
     </footer>
-    <script src="../assets/js/global.js?v=2"></script>
-    <script src="../assets/js/page-index.js?v=2"></script>
+    <script src="../assets/js/global.js?v=3"></script>
+    <script src="../assets/js/page-index.js?v=7"></script>
   </body>
 </html>

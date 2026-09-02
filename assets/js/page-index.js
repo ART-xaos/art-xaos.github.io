@@ -1,137 +1,103 @@
 (() => {
-  // Студийная сетка 3×3: выбранное фото раскрывается поверх неизменной сетки.
+  // Студийная галерея: крупное фото + лента миниатюр (как в галерее телефона).
   const studioGrid = document.getElementById("studio-grid");
-  const studioOverlay = document.getElementById("studio-overlay");
-  if (studioGrid && studioOverlay) {
+  const stage = document.getElementById("studio-stage");
+  const stageImage = document.getElementById("studio-stage-image");
+  const thumbsWrap = document.getElementById("studio-thumbs");
+  if (studioGrid && stage && stageImage && thumbsWrap) {
     const studioReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const tiles = Array.from(studioGrid.querySelectorAll(".studio-tile"));
-    const overlayImage = studioOverlay.querySelector(".studio-overlay__image");
-    const overlayCaption = studioOverlay.querySelector(
-      ".studio-overlay__caption",
-    );
-    const EASE = "cubic-bezier(.22, 1, .36, 1)";
-    let openTile = null;
+    const stageTag = document.getElementById("studio-stage-tag");
+    const stageCaption = document.getElementById("studio-stage-caption");
+    const thumbs = Array.from(thumbsWrap.querySelectorAll(".studio-thumb"));
+    const photos = thumbs.map((thumb) => ({
+      src: thumb.dataset.src,
+      alt: thumb.dataset.alt,
+      tag: thumb.dataset.tag,
+      caption: thumb.dataset.caption,
+    }));
+    let current = 0;
 
-    function overlayTransformFor(tile) {
-      const tileRect = tile.getBoundingClientRect();
-      const gridRect = studioGrid.getBoundingClientRect();
-      return `translate(${tileRect.left - gridRect.left}px, ${tileRect.top - gridRect.top}px) scale(${tileRect.width / gridRect.width}, ${tileRect.height / gridRect.height})`;
-    }
-
-    function animateOverlay(from, to, onFinish) {
-      studioOverlay.getAnimations().forEach((animation) => animation.cancel());
-      if (studioReducedMotion) {
-        onFinish?.();
-        return;
-      }
-      const animation = studioOverlay.animate(
-        [{ transform: from }, { transform: to }],
-        { duration: 250, easing: EASE, fill: "both" },
+    function show(index, { scrollThumb = true } = {}) {
+      current = (index + photos.length) % photos.length;
+      const photo = photos[current];
+      stageImage.src = photo.src;
+      stageImage.alt = photo.alt;
+      if (stageTag) stageTag.textContent = photo.tag;
+      if (stageCaption) stageCaption.textContent = photo.caption;
+      stage.setAttribute(
+        "aria-label",
+        `Фотографии студии, фото ${current + 1} из ${photos.length}: ${photo.caption}`,
       );
-      animation.onfinish = () => {
-        studioOverlay.style.transform = "";
-        onFinish?.();
-      };
-    }
-
-    function setOverlayContent(tile) {
-      const image = tile.querySelector(".studio-photo");
-      overlayImage.src = image.currentSrc || image.src;
-      overlayImage.alt = image.alt;
-      overlayCaption.textContent = tile.querySelector("figcaption").textContent;
-    }
-
-    function closeTile() {
-      if (!openTile) return;
-      const tile = openTile;
-      animateOverlay(
-        "translate(0, 0) scale(1, 1)",
-        overlayTransformFor(tile),
-        () => {
-          studioOverlay.hidden = true;
-          studioGrid.classList.remove("has-open");
-          tile.setAttribute("aria-expanded", "false");
-          openTile = null;
-        },
-      );
-    }
-
-    function openTileEl(tile) {
-      if (openTile === tile) {
-        closeTile();
-        return;
-      }
-      if (openTile) openTile.setAttribute("aria-expanded", "false");
-      setOverlayContent(tile);
-      studioOverlay.hidden = false;
-      studioGrid.classList.add("has-open");
-      tile.setAttribute("aria-expanded", "true");
-      openTile = tile;
-      animateOverlay(overlayTransformFor(tile), "translate(0, 0) scale(1, 1)");
-    }
-
-    function goToTile(direction) {
-      if (!openTile) return;
-      const index = tiles.indexOf(openTile);
-      const next =
-        tiles[
-          (index + (direction === "next" ? 1 : -1) + tiles.length) %
-            tiles.length
-        ];
-      openTile.setAttribute("aria-expanded", "false");
-      openTile = next;
-      next.setAttribute("aria-expanded", "true");
-      setOverlayContent(next);
-      if (!studioReducedMotion)
-        overlayImage.animate([{ opacity: 0.35 }, { opacity: 1 }], {
-          duration: 250,
-          easing: EASE,
+      thumbs.forEach((thumb, i) => {
+        const active = i === current;
+        thumb.classList.toggle("is-active", active);
+        thumb.setAttribute("aria-current", active ? "true" : "false");
+      });
+      if (scrollThumb) {
+        thumbs[current].scrollIntoView({
+          behavior: studioReducedMotion ? "auto" : "smooth",
+          inline: "center",
+          block: "nearest",
         });
+      }
+      if (!studioReducedMotion) {
+        stageImage.animate([{ opacity: 0.4 }, { opacity: 1 }], {
+          duration: 220,
+          easing: "ease-out",
+        });
+      }
     }
 
-    tiles.forEach((tile) => {
-      tile.addEventListener("click", () => openTileEl(tile));
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener("click", () => show(i));
     });
 
-    studioOverlay.addEventListener("click", closeTile);
+    const prevBtn = stage.querySelector(".studio-nav--prev");
+    const nextBtn = stage.querySelector(".studio-nav--next");
+    if (prevBtn) prevBtn.addEventListener("click", () => show(current - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => show(current + 1));
 
-    document.addEventListener("keydown", (e) => {
-      if (!openTile) return;
-      if (e.key === "Escape") closeTile();
-      if (e.key === "ArrowLeft") goToTile("prev");
-      if (e.key === "ArrowRight") goToTile("next");
+    stage.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        show(current - 1);
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        show(current + 1);
+      }
     });
 
-    // свайп: влево — назад, вправо — вперёд
-    let studioTouchX = 0,
-      studioTouchY = 0;
-    studioOverlay.addEventListener(
+    // свайп по крупному фото: влево — вперёд, вправо — назад
+    let stageTouchX = 0,
+      stageTouchY = 0;
+    stage.addEventListener(
       "touchstart",
       (e) => {
-        if (!openTile) return;
-        studioTouchX = e.changedTouches[0].clientX;
-        studioTouchY = e.changedTouches[0].clientY;
+        stageTouchX = e.changedTouches[0].clientX;
+        stageTouchY = e.changedTouches[0].clientY;
       },
       { passive: true },
     );
-    studioOverlay.addEventListener(
+    stage.addEventListener(
       "touchend",
       (e) => {
-        if (!openTile) return;
-        const dx = e.changedTouches[0].clientX - studioTouchX;
-        const dy = e.changedTouches[0].clientY - studioTouchY;
+        const dx = e.changedTouches[0].clientX - stageTouchX;
+        const dy = e.changedTouches[0].clientY - stageTouchY;
         if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-        goToTile(dx < 0 ? "prev" : "next");
+        show(current + (dx < 0 ? 1 : -1));
       },
       { passive: true },
     );
+
+    show(0, { scrollThumb: false });
   }
 
   // появление секций при скролле + подпись-росчерк в hero
   const toReveal = document.querySelectorAll(
-    ".reveal, .reveal-group, .hero-signature .sig-draw",
+    ".reveal, .reveal-group, .hero-signature .sig-draw .wrap",
   );
   const io = new IntersectionObserver(
     (entries) => {
@@ -142,7 +108,7 @@
         }
       });
     },
-    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+    { threshold: 0.25, rootMargin: "0px 0px -40px 0px" },
   );
   toReveal.forEach((el) => io.observe(el));
 
@@ -152,28 +118,6 @@
       .querySelector(".hero-signature .sig-draw")
       ?.classList.add("in-view");
   });
-
-  // фон меняет цвет вслед за текущим разделом
-  const washEl = document.querySelector(".bg-wash");
-  const accentColors = {
-    blue: "rgba(46,67,116,0.7)",
-    red: "rgba(180,67,42,0.7)",
-    green: "rgba(82,99,59,0.7)",
-  };
-  const accentSections = document.querySelectorAll("section[data-accent]");
-  const colorObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const accent = entry.target.dataset.accent;
-          if (washEl && accentColors[accent])
-            washEl.style.color = accentColors[accent];
-        }
-      });
-    },
-    { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
-  );
-  accentSections.forEach((s) => colorObserver.observe(s));
 
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
