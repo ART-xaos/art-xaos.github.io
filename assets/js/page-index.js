@@ -97,7 +97,7 @@
 
   // появление секций при скролле + подпись-росчерк в hero
   const toReveal = document.querySelectorAll(
-    ".reveal, .reveal-group, .hero-signature .sig-draw .wrap",
+    ".reveal, .reveal-group, .hero-signature .sig-draw",
   );
   const io = new IntersectionObserver(
     (entries) => {
@@ -108,7 +108,7 @@
         }
       });
     },
-    { threshold: 0.25, rootMargin: "0px 0px -40px 0px" },
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
   );
   toReveal.forEach((el) => io.observe(el));
 
