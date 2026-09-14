@@ -9,6 +9,7 @@
   --paper: #ede6d8;
   --paper-2: #e4dbc8;
   --ink: #262019;
+  --ink-for-btn: #262019c0;
   --ink-soft: #524a3e;
   --line: #c9bfa8;
   --line-strong: #948665;
@@ -115,6 +116,7 @@ h4 {
   letter-spacing: 0.03em;
   text-decoration: none;
   cursor: pointer;
+  text-align: center;
   transition:
     background 0.15s,
     color 0.15s,
@@ -124,7 +126,8 @@ h4 {
   will-change: transform;
 }
 .btn-primary {
-  background: var(--ink);
+  border: 0px;
+  background: var(--ink-soft);
   color: var(--paper);
 }
 .btn-primary:hover {
@@ -160,7 +163,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 82px;
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 28px;
@@ -168,9 +171,8 @@ h4 {
 .logo {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 9px;
   padding-left: 0;
-  gap: 12px;
   text-decoration: none;
 }
 .logo-mark {
@@ -178,30 +180,26 @@ h4 {
   flex: none;
   height: 64px;
   width: auto;
-  margin-bottom: 10px;
 }
 .logo-text {
   font-family: "Spectral", serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1.1;
 }
 .logo-text small {
   display: block;
   margin-top: 3px;
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.62rem;
+  font-family: "JetBrains   Mono", monospace;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .tabs {
   display: flex;
   height: 100%;
-  gap: 2px;
   margin: 0;
-  padding: 0;
   list-style: none;
-  margin-top: 16px;
 }
 .tabs li {
   display: flex;
@@ -209,19 +207,32 @@ h4 {
 .tabs a {
   display: flex;
   align-items: center;
-  height: 64px;
-  padding: 0 13px;
-  border-bottom: 2px solid transparent;
+  height: 82px;
+  padding: 0 24px;
+  margin: 0 -4px;
   color: var(--ink-soft);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.74rem;
-  letter-spacing: 0.03em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   text-decoration: none;
   transition: 0.15s;
+  background-image: linear-gradient(to right, var(--red), var(--red-text));
+  background-repeat: no-repeat;
+
+  background-position: 50% 100%;
+  background-size: 0% 4px;
+  transition:
+    background-size 0.2s ease-in-out,
+    background-color 0.2s ease-in-out,
+    background-c color 0.2s ease-in-out;
 }
 .tabs a:hover {
-  border-bottom-color: var(--line);
+  background-color: var(--paper-2);
+  transition-delay: 0s;
+  background-size: 100% 2px;
   color: var(--ink);
+  z-index: 2;
 }
 .tabs a[aria-current="page"] {
   border-bottom-color: var(--red);
@@ -270,7 +281,7 @@ h4 {
   gap: 12px;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1050px) {
   .tabs {
     position: fixed;
     top: 64px;
@@ -290,6 +301,7 @@ h4 {
     pointer-events: none;
     transform: translateY(-8px);
     transition: 0.2s;
+    padding: 0;
   }
   .tabs.open {
     opacity: 1;
@@ -305,6 +317,12 @@ h4 {
     padding: 0 20px;
     border-bottom: 1px solid var(--line);
     white-space: nowrap;
+  }
+  .tabs a:hover {
+    background-color: var(--paper);
+    transition-delay: 0s;
+    background-size: 100% 2px;
+    color: var(--ink);
   }
   .tabs li:last-child a {
     border-bottom: none;
@@ -354,8 +372,8 @@ section {
   flex-wrap: wrap;
 }
 .section-more {
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left: 16px;
+  padding-right: 16px;
   margin-top: 24px;
   display: flex;
   justify-content: center;
@@ -786,7 +804,7 @@ section.block {
   color: var(--ink);
   font-weight: 500;
 }
-@media (max-width: 1080px) {
+@media (max-width: 1040px) {
   .student-body {
     grid-template-columns: 1fr;
   }
@@ -921,6 +939,8 @@ section.block {
   gap: 10px;
 }
 .social-row a {
+  position: relative; /* Важно для позиционирования градиента */
+  z-index: 1; /* Чтобы текст/иконка были поверх градиента */
   width: 44px;
   height: 44px;
   border: 1px solid var(--ink);
@@ -930,24 +950,53 @@ section.block {
   justify-content: center;
   color: var(--ink);
   text-decoration: none;
+  background-color: transparent;
+  overflow: hidden; /* Чтобы градиент не вылезал за круглые края */
   transition:
-    background-color 0.15s,
-    border-color 0.15s,
-    color 0.15s;
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    color 0.15s ease-in-out;
 }
+
 .social-row a svg {
   width: 18px;
   height: 18px;
+  position: relative;
+  z-index: 2; /* Гарантирует, что иконка всегда сверху */
 }
+
+/* Обычный ховер для Telegram (простой цвет) */
 .social-row a.social-tg:hover {
-  background: #0088cc;
-  border-color: #0088cc;
+  background-color: #0088cc;
+  border-color: transparent;
   color: #fff;
 }
-.social-row a.social-ig:hover {
+
+/* --- Настройки для Instagram --- */
+
+/* Создаем скрытый градиентный слой внутри кнопки */
+.social-row a.social-ig::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #feda77, #f58529, #dd2a7b, #8134af);
-  border: 0px;
+  z-index: -1;
+  opacity: 0; /* Изначально прозрачный */
+  transition: opacity 0.15s ease-in-out; /* Плавность как у остальных элементов */
+}
+
+/* Ховер для Instagram */
+.social-row a.social-ig:hover {
+  border-color: transparent;
   color: #fff;
+}
+
+/* При ховере плавно включаем видимость градиента */
+.social-row a.social-ig:hover::before {
+  opacity: 1;
 }
 form {
   display: flex;
@@ -1259,9 +1308,9 @@ form button:disabled {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 13px;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -1960,6 +2009,13 @@ form button:disabled {
   .notfound-brush {
     width: min(92vw, 341px);
   }
+}
+
+.btn-fixed {
+  transition-delay: 0ms;
+  max-width: 50%;
+  min-width: 50%;
+  margin: 24px auto;
 }
 
 /* ---------- ПОНИЖЕННАЯ АНИМАЦИЯ (prefers-reduced-motion) ---------- */
