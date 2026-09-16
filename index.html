@@ -181,7 +181,7 @@
         <div class="wrap hero-grid reveal-group">
           <div class="reveal-group">
             <div class="eyebrow">Мастер декоративно-прикладного искусства</div>
-            <h1>Учу видеть форму —<br />и переносить её <em>на бумагу</em>.</h1>
+            <h1>Учу видеть форму —<br />и переносить её <em>на бумагу</em></h1>
             <p class="lede">
               15 лет в художественной сфере: работала с детьми и подростками в
               изостудиях Южно-Сахалинска и Санкт-Петербурга, готовлю к
@@ -190,7 +190,7 @@
             </p>
             <div class="btn-row">
               <a href="#contact" class="btn btn-primary"
-                >Записаться на пробное занятие →</a
+                >Записаться на консультацию →</a
               >
               <a href="#programs" class="btn btn-ghost">Смотреть программы</a>
             </div>
@@ -329,210 +329,37 @@
           <div class="head">
             <div class="eyebrow">Часть 02</div>
             <h2>Процесс работы в студии</h2>
-            <p>Листайте стрелками или выбирайте фото в ленте снизу.</p>
+            <p>Листайте или выбирайте фото в ленте снизу.</p>
           </div>
 
-          <div class="studio-carousel" id="studio-grid">
-            <div
-              class="studio-stage"
-              id="studio-stage"
-              tabindex="0"
-              role="group"
-              aria-roledescription="карусель"
-              aria-label="Фотографии студии"
-            >
-              <img
-                class="studio-stage__image"
-                id="studio-stage-image"
-                src="assets/images/studio/lq/8.jpg"
-                alt="Подготовка постановки — сентябрь 2025"
-                decoding="async"
-                fetchpriority="high"
-              />
-              <button
-                class="studio-nav studio-nav--prev"
-                type="button"
-                aria-label="Предыдущее фото"
-              >
-                ←
-              </button>
-              <button
-                class="studio-nav studio-nav--next"
-                type="button"
-                aria-label="Следующее фото"
-              >
-                →
-              </button>
-              <div class="studio-stage__footer">
-                <span class="studio-stage__tag" id="studio-stage-tag"
-                  >Рабочий процесс</span
-                >
-                <span class="studio-stage__caption" id="studio-stage-caption"
-                  >Подготовка постановки — сентябрь 2025</span
-                >
+          <div class="carousel reveal-group" id="carousel">
+            <div class="stage">
+              <div class="slides" id="slides"></div>
+              <div class="zone left" data-dir="-1"></div>
+              <div class="zone right" data-dir="1"></div>
+              <div class="progress-track">
+                <div class="progress">
+                  <div
+                    class="progress-bar progress-bar--back"
+                    id="progressBack"
+                  ></div>
+
+                  <div
+                    class="progress-bar progress-bar--front"
+                    id="progressFront"
+                  ></div>
+                </div>
               </div>
             </div>
-
-            <div class="studio-thumbs" id="studio-thumbs">
-              <button
-                class="studio-thumb is-active"
-                type="button"
-                data-src="assets/images/studio/lq/5.jpg"
-                data-alt="Подготовка постановки — сентябрь 2025"
-                data-tag="Рабочий процесс"
-                data-caption="Подготовка постановки — сентябрь 2025"
-                aria-current="true"
-                aria-label="Фото 1 из 9: Подготовка постановки — сентябрь 2025"
+            <div class="thumbs">
+              <div class="thumbs-track" id="thumbsTrack"></div>
+              <a
+                href="gallery/"
+                class="btn btn-ghost section-more"
+                style="margin: 24px 0px 0px"
+                >Смотреть все работы →</a
               >
-                <img
-                  src="assets/images/studio/lq/5.jpg"
-                  alt=""
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/3.jpg"
-                data-alt="Индивидуальный разбор работы"
-                data-tag="Рабочий процесс"
-                data-caption="Индивидуальный разбор работы"
-                aria-current="false"
-                aria-label="Фото 2 из 9: Индивидуальный разбор работы"
-              >
-                <img
-                  src="assets/images/studio/lq/3.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/8.jpg"
-                data-alt="Групповая постановка, поток «Начинающие»"
-                data-tag="Рабочий процесс"
-                data-caption="Групповая постановка, поток «Начинающие»"
-                aria-current="false"
-                aria-label="Фото 3 из 9: Групповая постановка, поток «Начинающие»"
-              >
-                <img
-                  src="assets/images/studio/lq/8.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/4.jpg"
-                data-alt="Итоговая выставка потока"
-                data-tag="Мероприятия"
-                data-caption="Итоговая выставка потока"
-                aria-current="false"
-                aria-label="Фото 4 из 9: Итоговая выставка потока"
-              >
-                <img
-                  src="assets/images/studio/lq/4.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/1.jpg"
-                data-alt="Пленэр за городом"
-                data-tag="Мероприятия"
-                data-caption="Пленэр за городом"
-                aria-current="false"
-                aria-label="Фото 5 из 9: Пленэр за городом"
-              >
-                <img
-                  src="assets/images/studio/lq/1.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/6.jpg"
-                data-alt="Творческий вечер"
-                data-tag="Мероприятия"
-                data-caption="Творческий вечер"
-                aria-current="false"
-                aria-label="Фото 6 из 9: Творческий вечер"
-              >
-                <img
-                  src="assets/images/studio/lq/6.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/7.jpg"
-                data-alt="Ученик, x лет — натюрморт"
-                data-tag="Работы учеников"
-                data-caption="Ученик, x лет — натюрморт"
-                aria-current="false"
-                aria-label="Фото 7 из 9: Ученик, x лет — натюрморт"
-              >
-                <img
-                  src="assets/images/studio/lq/7.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/2.jpg"
-                data-alt="Ученица, x лет — портрет"
-                data-tag="Работы учеников"
-                data-caption="Ученица, x лет — портрет"
-                aria-current="false"
-                aria-label="Фото 8 из 9: Ученица, x лет — портрет"
-              >
-                <img
-                  src="assets/images/studio/lq/2.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                class="studio-thumb"
-                type="button"
-                data-src="assets/images/studio/lq/9.jpg"
-                data-alt="Ученик, x лет — итоговая композиция"
-                data-tag="Работы учеников"
-                data-caption="Ученик, x лет — итоговая композиция"
-                aria-current="false"
-                aria-label="Фото 9 из 9: Ученик, x лет — итоговая композиция"
-              >
-                <img
-                  src="assets/images/studio/lq/9.jpg"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
             </div>
-            <a
-              href="gallery/"
-              class="btn btn-ghost section-more"
-              style="margin: 24px 0px 0px"
-              >Смотреть все работы →</a
-            >
           </div>
         </div>
       </section>
@@ -702,7 +529,7 @@
           <div class="programs programs--pricing reveal-group">
             <div class="program">
               <div class="n">01</div>
-              <h3 class="text-fill">Подготовка в вузы</h3>
+              <h3 class="text-fill">ПОДГОТОВКА В ХУДОЖЕСТВЕННЫЕ ВУЗЫ</h3>
               <p>
                 Для тех, кто планирует поступление в художественные учебные
                 заведения. Возраст 14–18 лет.
@@ -724,6 +551,49 @@
             </div>
             <div class="program">
               <div class="n">02</div>
+              <h3 class="text-fill">Консультация по поступлению</h3>
+              <p>
+                Разбор уровня будущего абитуриента, портфолио и особенностей
+                вступительных испытаний. Подходит тем, кто планирует поступление
+                в художественный вуз.
+              </p>
+
+              <ul class="price-list">
+                <li><span>Консультация</span><span>1 000 ₽</span></li>
+              </ul>
+
+              <div class="meta">
+                <span>Формат: очно</span><span>1 консультация</span>
+              </div>
+
+              <!-- <div class="program-details">
+                <p>
+                  На консультацию желательно принести портфолио — любые
+                  творческие работы, как сильные, так и те, в которых вы сами
+                  сомневаетесь.
+                </p>
+
+                <p>
+                  Подойдут работы по живописи, рисунку, композиции, а также
+                  цифровой графике, если она имеется.
+                </p>
+
+                <p>
+                  По итогам консультации вы получите оценку текущего уровня,
+                  рекомендации по выбору вузов и информацию об особенностях
+                  поступления.
+                </p>
+
+                <p>
+                  Если вуз уже выбран, рекомендуется заранее принести
+                  распечатанную информацию о вступительном испытании: примеры
+                  экзаменационных работ, продолжительность и формат экзамена, а
+                  также контактный телефон приёмной комиссии.
+                </p>
+              </div> -->
+            </div>
+            <div class="program">
+              <div class="n">03</div>
               <h3 class="text-fill">Творческое развитие</h3>
               <p>
                 Развивающие занятия рисунком и живописью без привязки к
@@ -811,7 +681,7 @@
                 </a>
               </div>
             </div>
-            <form
+            <!-- <form
               id="contact-form"
               action="https://api.web3forms.com/submit"
               method="POST"
@@ -892,7 +762,7 @@
                 role="status"
                 aria-live="polite"
               ></p>
-            </form>
+            </form> -->
           </div>
         </div>
       </section>
@@ -901,7 +771,7 @@
     <footer class="site-footer">
       <div class="wrap footer-content">
         <span class="footer-brand">
-          © 2026 АРТ-ХАОС · студия рисунка и живописи
+          © 2026 АРТ-ХАОС
           <svg
             class="signature footer-signature"
             viewBox="0 0 220 60"
@@ -919,7 +789,7 @@
             />
           </svg>
         </span>
-        <span>Сайт-визитка</span>
+        <span> СТУДИЯ ПОДГОТОВКИ В ВУЗЫ, РИСУНКА И ЖИВОПИСИ</span>
       </div>
     </footer>
 
@@ -943,5 +813,6 @@
 
     <script src="assets/js/global.js?v=3"></script>
     <script src="assets/js/page-index.js?v=7"></script>
+    <script src="assets/js/carousel.js?v=1"></script>
   </body>
 </html>
