@@ -23,6 +23,13 @@
   --shadow-md: 0 16px 34px rgba(38, 32, 25, 0.12);
 }
 
+@font-face {
+  font-family: "Montserrat Regular"; /* Название, которое вы будете использовать */
+  src: url("/assets/fonts/Montserrat-VariableFont_wght.woff2") format("woff2"); /* Путь к файлу */
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -83,23 +90,21 @@ h4 {
 .wrap {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 32px 28px;
 }
 .eyebrow {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.6em;
   color: var(--ink-soft);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-left: -16px;
 }
 .eyebrow::before {
   display: inline-block;
-  width: 22px;
-  height: 1px;
-  background: var(--red);
   content: "";
 }
 
@@ -184,7 +189,7 @@ h4 {
   width: auto;
 }
 .logo-text {
-  font-family: "montserrat", monospace;
+  font-family: "Montserrat Regular", monospace;
   font-size: 2rem;
   letter-spacing: 8px;
   line-height: 1.1;
@@ -371,16 +376,16 @@ section {
 
 /* ---------- HERO ---------- */
 .hero {
-  padding: 32px 0 32px;
+  padding: 64px 0 32px;
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: 48px;
   align-items: center;
 }
 .hero h1 {
-  font-size: clamp(2.1rem, 4.4vw, 3.3rem);
+  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
   line-height: 1.08;
   margin: 18px 0 20px;
 }
@@ -470,12 +475,12 @@ figcaption b {
 
 /* ---------- SECTION HEADS ---------- */
 .head {
-  max-width: 640px;
+  max-width: 960px;
   margin-bottom: 44px;
 }
 .head h2 {
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
-  margin-top: 14px;
+  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
+  margin-top: 4px;
 }
 .head p {
   color: var(--ink-soft);
@@ -606,13 +611,35 @@ section.block {
   justify-items: center;
 }
 
+.carousel-grid {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+}
+.carousel-h {
+  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
+  line-height: 115%;
+}
+
 .stage {
   position: relative;
   width: 100%;
   overflow: hidden;
   background: #1c1f26;
-  max-width: 560px;
+  max-width: 520px;
   aspect-ratio: 10/8;
+}
+
+.stage-drawings {
+  aspect-ratio: 3/4;
+  max-width: 440px;
+}
+
+@media (max-width: 1080px) {
+  .carousel-grid {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* transform управляется целиком из JS, поэтому здесь нет CSS transition */
@@ -711,13 +738,22 @@ section.block {
 .thumbs {
   position: relative;
   overflow: hidden;
-  margin-top: 12px;
-  padding-bottom: 4px;
-  max-width: 560px;
+  margin-top: 8px;
+  max-width: 520px;
   width: 100%;
   height: auto;
 }
+.thumbs-drawings {
+  max-width: 440px;
+}
+.caps {
+  text-transform: uppercase;
+}
 
+.logo-dot {
+  max-width: 7px;
+  max-height: 7px;
+}
 /* сама лента миниатюр — двигается только через transform (GPU),
      что даёт гладкую анимацию без дёрганья, в отличие от scrollLeft */
 .thumbs-track {
@@ -1496,7 +1532,7 @@ form button:disabled {
 }
 .about-hero h1 {
   margin: 18px 0 20px;
-  font-size: clamp(2.1rem, 4.4vw, 3.3rem);
+  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
   line-height: 1.02;
 }
 .about-hero h1 em {
@@ -1537,7 +1573,7 @@ form button:disabled {
 }
 .section-heading h2 {
   margin-top: 14px;
-  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
   line-height: 1.1;
 }
 .two-columns {
