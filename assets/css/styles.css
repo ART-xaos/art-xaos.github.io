@@ -26,12 +26,14 @@
 @font-face {
   font-family: "Montserrat Regular"; /* Название, которое вы будете использовать */
   src: url("/assets/fonts/Montserrat-VariableFont_wght.woff2") format("woff2"); /* Путь к файлу */
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
 }
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  text-wrap: pretty;
 }
 html {
   scroll-behavior: auto;
@@ -189,7 +191,9 @@ h4 {
   width: auto;
 }
 .logo-text {
-  font-family: "Montserrat Regular", monospace;
+  font-family: "Montserrat", monospace;
+  font-weight: 500;
+
   font-size: 2rem;
   letter-spacing: 8px;
   line-height: 1.1;
@@ -287,7 +291,7 @@ h4 {
 .burger span {
   display: block;
   width: 18px;
-  height: 1.5px;
+  height: 2px;
   margin: 4px auto;
   background: var(--ink);
 }
@@ -487,7 +491,7 @@ figcaption b {
   margin-top: 12px;
 }
 section.block {
-  padding: 64px 0;
+  padding: 32px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -587,7 +591,7 @@ section.block {
   margin: 0;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 540px) {
   .hero-grid {
     grid-template-columns: 1fr;
     margin-left: 36px;
@@ -639,6 +643,14 @@ section.block {
   .carousel-grid {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+  .carousel {
+    align-self: center;
+    max-width: 520px;
+    min-width: 200px;
+    width: 100%;
   }
 }
 
@@ -765,8 +777,8 @@ section.block {
 
 .thumb {
   flex: 0 0 auto;
-  width: 84px;
-  height: 56px;
+  width: 42px;
+  aspect-ratio: 3/4;
   overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
@@ -776,6 +788,7 @@ section.block {
     border-color 0.2s ease,
     transform 0.2s ease;
 }
+
 .thumb img {
   width: 100%;
   height: 100%;
@@ -2176,6 +2189,7 @@ form button:disabled {
   width: 100%;
   max-width: 440px;
   margin: 24px auto;
+  align-self: center;
 }
 
 /* ---------- ПОНИЖЕННАЯ АНИМАЦИЯ (prefers-reduced-motion) ---------- */
