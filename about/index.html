@@ -35,15 +35,12 @@
       content="https://art-xaos.github.io/assets/images/og-image.png"
     />
     <link rel="canonical" href="https://art-xaos.github.io/about/" />
-    <link rel="icon" href="../assets/images/favicon.ico" type="image/svg+xml" />
-    <link rel="alternate icon" href="../assets/images/favicon.ico" />
+    <link rel="icon" href="../assets/images/favicon.ico" sizes="any" />
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/styles.css?v=1" />
+    <link rel="manifest" href="../assets/images/site.webmanifest" />
+    <meta name="theme-color" content="#ede6d8" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=11" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Перейти к содержанию</a>
@@ -60,15 +57,6 @@
             >АРТ-ХАОС<small>подготовка в художественные вузы</small></span
           >
         </a>
-        <button
-          class="burger"
-          id="burger"
-          aria-label="Меню"
-          aria-expanded="false"
-          aria-controls="tabs"
-        >
-          <span></span><span></span><span></span>
-        </button>
         <ul class="tabs" id="tabs">
           <li>
             <a href="../#about">О студии</a>
@@ -77,7 +65,7 @@
             <a href="../#programs">Программы</a>
           </li>
           <li>
-            <a href="../#students/">Ученики</a>
+            <a href="../#students">Ученики</a>
           </li>
           <li>
             <a href="../#programs">Прайс</a>
@@ -93,8 +81,8 @@
       <section class="about-hero">
         <div class="wrap about-hero__grid">
           <div>
-            <div class="eyebrow caps eyebrow-down">
-              <img src="../assets/images/favicon-32x32.png" class="logo-dot" />О
+            <div class="eyebrow">
+              <img src="../assets/images/favicon-32x32.png" class="logo-dot" alt="" />О
               преподавателе
             </div>
             <h1>
@@ -106,12 +94,14 @@
               работать с материалом.
             </p>
           </div>
-          <div class="hero-photo hero-photo-about">
+          <div class="hero-photo">
             <div class="frame">
               <div class="ph">
                 <img
-                  src="assets/images/me/2.jpg"
+                  src="../assets/images/me/2.jpg"
                   alt="Портрет преподавателя"
+                  width="1670"
+                  height="2282"
                   fetchpriority="high"
                 />
               </div>
@@ -353,6 +343,8 @@
               <img
                 src="../assets/images/art/1.jpg"
                 alt="Интерьер"
+                width="1180"
+                height="1554"
                 loading="lazy"
                 decoding="async"
               />
@@ -362,6 +354,8 @@
               <img
                 src="../assets/images/art/2.jpg"
                 alt="Вступительная работа"
+                width="1860"
+                height="1380"
                 loading="lazy"
                 decoding="async"
               />
@@ -369,8 +363,10 @@
             </figure>
             <figure>
               <img
-                src="../assets/images/cats/cat (5).png"
-                alt="Пленэр за городом"
+                src="../assets/images/art/IMG_2802.jpg"
+                alt="Пленэр"
+                width="960"
+                height="1280"
                 loading="lazy"
                 decoding="async"
               />
@@ -378,8 +374,10 @@
             </figure>
             <figure>
               <img
-                src="../assets/images/cats/cat (8).png"
+                src="../assets/images/students/art/Потапова А. А..jpg"
                 alt="Работа ученицы над портретом"
+                width="888"
+                height="1278"
                 loading="lazy"
                 decoding="async"
               />
@@ -414,7 +412,7 @@
         <span>Сайт-визитка</span>
       </div>
     </footer>
-    <script src="../assets/js/global.js?v=3"></script>
-    <script src="../assets/js/page-index.js?v=7"></script>
+    <script src="../assets/js/global.js?v=4"></script>
+    <script src="../assets/js/page-index.js?v=8"></script>
   </body>
 </html>

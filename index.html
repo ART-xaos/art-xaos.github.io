@@ -60,9 +60,10 @@
       content="Студия рисунка и живописи АРТ-ХАОС в Южно-Сахалинске"
     />
 
-    <link rel="icon" href="assets/images/favicon.ico" type="image/svg+xml" />
-    <link rel="alternate icon" href="assets/images/favicon.ico" />
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/images/site.webmanifest" />
 
     <script type="application/ld+json">
       {
@@ -123,13 +124,7 @@
       }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/styles.css?v=1" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=11" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Перейти к содержанию</a>
@@ -146,15 +141,6 @@
             >АРТ-ХАОС<small>подготовка в художественные вузы</small></span
           >
         </a>
-        <button
-          class="burger"
-          id="burger"
-          aria-label="Меню"
-          aria-expanded="false"
-          aria-controls="tabs"
-        >
-          <span></span><span></span><span></span>
-        </button>
         <ul class="tabs" id="tabs">
           <li>
             <a href="#about">О студии</a>
@@ -180,8 +166,12 @@
       <section class="hero" id="top">
         <div class="wrap hero-grid reveal-group">
           <div class="reveal-group">
-            <div class="eyebrow caps eyebrow-down">
-              <img src="assets/images/favicon-32x32.png" class="logo-dot" />
+            <div class="eyebrow">
+              <img
+                src="assets/images/favicon-32x32.png"
+                class="logo-dot"
+                alt=""
+              />
               Погорелова Анастасия Сергеевна, создатель студии «АРТ-ХАОС»,
               выпускница Санкт-Петербургской государственной
               художественно-промышленной академии имени А.Л. Штиглица
@@ -222,7 +212,7 @@
             <div class="frame">
               <div class="ph">
                 <img
-                  src="assets/images/teacher/photos/2.jpg"
+                  src="assets/images/teacher/photos/photo1.webp"
                   alt="Портрет преподавателя"
                   fetchpriority="high"
                 />
@@ -239,10 +229,11 @@
       <section class="block" id="about">
         <div class="wrap reveal">
           <div class="head reveal">
-            <div class="eyebrow caps eyebrow-down">
+            <div class="eyebrow">
               <img
                 src="assets/images/favicon-32x32.png"
                 class="logo-dot"
+                alt=""
               />Часть 01
             </div>
             <h2>О студии — искусство, как образ жизни</h2>
@@ -337,16 +328,19 @@
       <!-- ============ ЧАСТЬ 2: СТУДИЯ ============ -->
       <section class="block" id="studio">
         <div class="wrap reveal">
-          <div class="eyebrow caps eyebrow-down">
-            <img src="assets/images/favicon-32x32.png" class="logo-dot" />Часть
-            02
+          <div class="eyebrow">
+            <img
+              src="assets/images/favicon-32x32.png"
+              class="logo-dot"
+              alt=""
+            />Часть 02
           </div>
           <div class="carousel-grid">
             <div>
               <div class="head carousel-h">
                 <h2>«АРТ-ХАОС» — искусство, как образ жизни</h2>
               </div>
-              <div class="carousel-p">
+              <div>
                 <p>
                   Студия, где ты можешь быть собой, развить своё творчество,
                   найти единомышленников и с комфортом проложить свой маршрут в
@@ -362,15 +356,51 @@
             <div class="carousel reveal-group" data-carousel>
               <!-- Фотографии этой конкретной карусели -->
               <div class="carousel-images">
-                <img src="assets/images/studio/lq/5.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/3.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/8.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/4.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/1.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/6.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/7.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/2.jpg" alt="Работа ученика" />
-                <img src="assets/images/studio/lq/9.jpg" alt="Работа ученика" />
+                <img
+                  data-src="assets/images/studio/lq/5.jpg"
+                  data-thumb="assets/images/studio/lq/5-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/3.jpg"
+                  data-thumb="assets/images/studio/lq/3-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/8.jpg"
+                  data-thumb="assets/images/studio/lq/8-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/4.jpg"
+                  data-thumb="assets/images/studio/lq/4-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/1.jpg"
+                  data-thumb="assets/images/studio/lq/1-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/6.jpg"
+                  data-thumb="assets/images/studio/lq/6-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/7.jpg"
+                  data-thumb="assets/images/studio/lq/7-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/2.jpg"
+                  data-thumb="assets/images/studio/lq/2-thumb.jpg"
+                  alt="Работа ученика"
+                />
+                <img
+                  data-src="assets/images/studio/lq/9.jpg"
+                  data-thumb="assets/images/studio/lq/9-thumb.jpg"
+                  alt="Работа ученика"
+                />
               </div>
 
               <div class="stage">
@@ -409,10 +439,11 @@
       <section class="block" id="students">
         <div class="wrap reveal">
           <div class="head">
-            <div class="eyebrow caps eyebrow-down">
+            <div class="eyebrow">
               <img
                 src="assets/images/favicon-32x32.png"
                 class="logo-dot"
+                alt=""
               />Часть 03
             </div>
             <h2>Достижения учеников</h2>
@@ -564,10 +595,11 @@
       <section class="block" id="programs">
         <div class="wrap reveal">
           <div class="head reveal-group">
-            <div class="eyebrow caps eyebrow-down">
+            <div class="eyebrow">
               <img
                 src="assets/images/favicon-32x32.png"
                 class="logo-dot"
+                alt=""
               />Часть 04
             </div>
             <h2>Программы обучения</h2>
@@ -577,8 +609,8 @@
             </p>
           </div>
 
-          <div class="programs programs--pricing reveal-group">
-            <div class="program big">
+          <div class="programs reveal-group">
+            <div class="program">
               <h3 class="text-fill">Подготовка в художественные вузы</h3>
               <ul class="price-list">
                 <li><span>Онлайн</span><span>1 700 ₽ / 2,5 ч</span></li>
@@ -594,7 +626,7 @@
                 <li><span>Индивидуально</span><span>5 000 ₽ / 2,5 ч</span></li>
               </ul>
             </div>
-            <div class="program big">
+            <div class="program">
               <h3 class="text-fill">Творческое развитие</h3>
               <p>
                 Развивающие занятия рисунком и живописью без привязки к
@@ -618,10 +650,11 @@
       <section class="block" id="contact">
         <div class="wrap reveal-group">
           <div class="head">
-            <div class="eyebrow caps eyebrow-down">
+            <div class="eyebrow">
               <img
                 src="assets/images/favicon-32x32.png"
                 class="logo-dot"
+                alt=""
               />Часть 05
             </div>
             <h2>Контактная информация</h2>
@@ -651,7 +684,13 @@
                 </li>
                 <li><span>Часы работы</span><span>Пн–Сб, 10:00–20:00</span></li>
               </ul>
-              <div class="eyebrow">Соцсети</div>
+              <div class="eyebrow">
+                <img
+                  src="assets/images/favicon-32x32.png"
+                  class="logo-dot"
+                  alt=""
+                />Соцсети
+              </div>
               <div class="social-row reveal-group">
                 <a
                   href="https://t.me/ART_XAOS_Studio"
@@ -667,17 +706,6 @@
                   >
                     <path
                       d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"
-                    />
-                  </svg>
-                </a>
-                <a href="#" aria-label="Instagram" class="social-ig">
-                  <svg
-                    viewBox="0 0 448 512"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
                     />
                   </svg>
                 </a>
@@ -728,8 +756,8 @@
         <path d="M12 19V5M5 12l7-7 7 7" />
       </svg>
     </button>
-    <script src="assets/js/global.js?v=3"></script>
-    <script src="assets/js/page-index.js?v=7"></script>
-    <script src="assets/js/carousel.js?v=2"></script>
+    <script src="assets/js/global.js?v=4"></script>
+    <script src="assets/js/page-index.js?v=8"></script>
+    <script src="assets/js/carousel.js?v=5"></script>
   </body>
 </html>

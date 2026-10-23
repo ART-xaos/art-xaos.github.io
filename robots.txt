@@ -1,18 +1,9 @@
 User-agent: *
 Allow: /
-Allow: /assets/css/styles.css
-Allow: /assets/js/*.js
-Allow: /assets/images/
-Allow: /assets/fonts/
 
-# Блокировка служебных файлов проекта и системных папок IDE
+# Служебные и технические файлы
 Disallow: /.idea/
-Disallow: /.nojekyll
-Disallow: /robots.txt
-
-# Блокировка страниц ошибок, чтобы они не попадали в выдачу
 Disallow: /404.html
-Disallow: /js/page-404.js
+Disallow: /assets/js/page-404.js
 
-# Ссылка на карту сайта (замените example.com на ваш домен)
-Sitemap: https://art-xaos.github.io/
+Sitemap: https://art-xaos.github.io/sitemap.xml
