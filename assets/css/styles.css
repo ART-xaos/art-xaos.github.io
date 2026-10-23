@@ -6,10 +6,11 @@
 
 /* ---------- ОБЩЕЕ (шапка, футер, кнопки, типографика) ---------- */
 :root {
+  /* цвета */
   --paper: #ede6d8;
   --paper-2: #e4dbc8;
+  --paper-3: lab(85.64% 2 10.43);
   --ink: #262019;
-  --ink-for-btn: #262019c0;
   --ink-soft: #524a3e;
   --line: #c9bfa8;
   --line-strong: #948665;
@@ -18,25 +19,199 @@
   --red-text: #a83f28;
   --green: #52633b;
   --white: #faf7f0;
+  /* шрифты */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Spectral", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Montserrat", monospace;
+  /* размеры заголовков */
+  --fs-title: clamp(1.75rem, 1.009rem + 3.704vw, 3rem);
+  --fs-title-sm: clamp(1.75rem, 1.009rem + 3.704vw, 2.5rem);
+  /* междустрочный интервал заголовков: единый для одинаковых элементов на всех страницах */
+  --lh-title: 1.1;
+  --lh-heading: 1.3;
+  /* геометрия, отступы и тени */
+  --gutter: clamp(20px, 4.2vw, 48px);
+  /* отступ кнопки «наверх» снизу: на мобильных поднимается над панелью навигации */
+  --to-top-bottom: 20px;
   --radius: 2px;
   --shadow-sm: 0 6px 18px rgba(38, 32, 25, 0.05);
   --shadow-md: 0 16px 34px rgba(38, 32, 25, 0.12);
 }
 
+/* ---------- ЛОКАЛЬНЫЕ ШРИФТЫ (self-hosted, без Google Fonts) ----------
+   Inter — основной текст (вариативный 100–900)
+   JetBrains Mono — служебный/моноширинный (вариативный 100–800)
+   Spectral — заголовки: 500 + курсив 500
+   Montserrat — логотип (вариативный 100–900)   */
 @font-face {
-  font-family: "Montserrat"; /* Название, которое вы будете использовать */
-  src: url("/assets/fonts/Montserrat-VariableFont_wght.woff2") format("woff2");
-  font-weight: 600;
+  font-family: "Inter";
+  src: url("../fonts/inter-cyrillic-ext.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-cyrillic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono-cyrillic-ext.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono-cyrillic.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono-latin-ext.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono-latin.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-500-cyrillic-ext.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-500-cyrillic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-500-latin-ext.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-500-latin.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-italic-500-cyrillic-ext.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-italic-500-cyrillic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-italic-500-latin-ext.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Spectral";
+  src: url("../fonts/spectral-italic-500-latin.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   text-wrap: pretty;
-}
-html {
-  scroll-behavior: auto;
 }
 section[id] {
   scroll-margin-top: 84px;
@@ -45,7 +220,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   position: relative;
@@ -64,8 +239,13 @@ h3,
 h4 {
   margin: 0;
   color: var(--ink);
-  font-family: "Spectral", serif;
+  font-family: var(--font-serif);
   font-weight: 500;
+  line-height: var(--lh-title);
+}
+h3,
+h4 {
+  line-height: var(--lh-heading);
 }
 :focus-visible {
   outline: 2px solid var(--blue);
@@ -81,7 +261,7 @@ h4 {
   border-radius: var(--radius);
   background: var(--ink);
   color: var(--paper);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   text-decoration: none;
   transition: top 0.2s ease;
@@ -92,33 +272,35 @@ h4 {
 .wrap {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 32px 28px;
+  padding: clamp(20px, 2.86vw, 32px) var(--gutter);
 }
 .eyebrow {
   display: flex;
   align-items: baseline;
   gap: 0.6em;
+  margin-left: -16px;
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin-left: -16px;
 }
 .eyebrow::before {
   display: inline-block;
   content: "";
 }
 
-/* Buttons */
+/* Buttons — одинаковая высота 48px у всех вариантов */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 14px 24px;
+  min-height: 48px;
+  padding: 12px 24px;
   border: 1px solid var(--ink);
   border-radius: var(--radius);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   text-decoration: none;
@@ -133,12 +315,11 @@ h4 {
   will-change: transform;
 }
 .btn-primary {
-  border: 0px;
+  border-color: transparent;
   background: var(--ink-soft);
   color: var(--paper);
 }
 .btn-primary:hover {
-  border-color: var(--red);
   background: var(--red);
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
@@ -165,7 +346,7 @@ h4 {
   z-index: 50;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
-  box-shadow: 0px 1px 18px var(--paper-2);
+  box-shadow: 0 1px 18px var(--paper-2);
 }
 .nav-inner {
   display: flex;
@@ -174,13 +355,12 @@ h4 {
   height: 82px;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 var(--gutter);
 }
 .logo {
   display: flex;
   align-items: center;
-  padding: 9px;
-  padding-left: 0;
+  padding: 9px 9px 9px 0;
   text-decoration: none;
 }
 .logo-mark {
@@ -191,43 +371,21 @@ h4 {
   width: auto;
 }
 .logo-text {
-  font-family: "Montserrat", monospace;
+  font-family: var(--font-display);
   font-weight: 500;
-
   font-size: 2rem;
   letter-spacing: 8px;
   line-height: 1.1;
-  text-shadow: 0px 0px 10px #fff;
+  text-shadow: 0 0 10px #fff;
 }
 .logo-text small {
   display: block;
   margin-top: 3px;
   color: var(--ink-soft);
-  font-family: "JetBrains   Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-@media (max-width: 580px) {
-  .logo-mark {
-    display: block;
-    flex: none;
-    max-height: 64px;
-    width: auto;
-    height: clamp(2rem, 12.31vw - 0.46rem, 4rem);
-  }
-  .logo-text {
-    font-size: clamp(0.875rem, 0.081rem + 5.294vw, 2rem);
-    letter-spacing: clamp(0rem, -0.353rem + 2.353vw, 0.5rem);
-  }
-
-  .logo-text small {
-    font-size: clamp(0.375rem, -0.148rem + 2.615vw, 0.8rem);
-  }
-
-  .nav-inner {
-    height: clamp(4rem, 3.206rem + 5.294vw, 5.125rem);
-  }
 }
 .tabs {
   display: flex;
@@ -240,68 +398,85 @@ h4 {
 }
 .tabs a {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
   height: 82px;
   padding: 0 24px;
   margin: 0 -4px;
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   text-transform: uppercase;
   text-wrap: nowrap;
   letter-spacing: 0.08em;
+  text-align: center;
   text-decoration: none;
-  transition: 0.15s;
   background-image: linear-gradient(to right, var(--red), var(--red-text));
   background-repeat: no-repeat;
-
   background-position: 50% 100%;
   background-size: 0% 4px;
   transition:
     background-size 0.2s ease-in-out,
     background-color 0.2s ease-in-out,
-    background-c color 0.2s ease-in-out;
+    z-index 0.5s ease-in-out;
+}
+/* иконка меню: маска красится в currentColor, поэтому сама меняет цвет при наведении.
+   SVG встроен как data-URI: при открытии страницы файлом (file://) браузер
+   блокирует внешние url() в mask-image, а data-URI работает всегда. */
+.tabs a::before {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background-color: currentColor;
+  -webkit-mask-image: var(--icon);
+  mask-image: var(--icon);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+/* иконки привязаны к позиции: порядок пунктов одинаков во всех шапках сайта */
+.tabs li:nth-child(1) a::before {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E");
+}
+.tabs li:nth-child(2) a::before {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z'/%3E%3Cpath d='M22 10v6'/%3E%3Cpath d='M6 12.5V16a6 3 0 0 0 12 0v-3.5'/%3E%3C/svg%3E");
+}
+.tabs li:nth-child(3) a::before {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Cpath d='M16 3.128a4 4 0 0 1 0 7.744'/%3E%3Cpath d='M22 21v-2a4 4 0 0 0-3-3.87'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3C/svg%3E");
+}
+.tabs li:nth-child(4) a::before {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z'/%3E%3Ccircle cx='7.5' cy='7.5' r='.5' fill='%23000'/%3E%3C/svg%3E");
+}
+.tabs li:nth-child(5) a::before {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
 }
 .tabs a:hover {
   background-color: var(--paper-2);
-  transition-delay: 0s;
   background-size: 100% 2px;
   color: var(--ink);
-  z-index: 2;
+  z-index: 3;
+  transition-delay: 0s;
 }
 .tabs a[aria-current="page"] {
-  border-bottom-color: var(--red);
+  background-size: 100% 4px;
   color: var(--ink);
 }
 .tab-num {
   margin-right: 7px;
   color: var(--red-text);
 }
-.burger {
-  display: none;
-  min-width: 24px;
-  min-height: 24px;
-  min-width: 48px;
-  min-height: 48px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: none;
-  cursor: pointer;
-}
-.burger span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  margin: 4px auto;
-  background: var(--ink);
-}
-
 /* Site footer */
 .site-footer {
   padding: 30px 0;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
 }
 .footer-content {
@@ -318,61 +493,78 @@ h4 {
   gap: 12px;
 }
 
+@media (max-width: 580px) {
+  .logo-mark {
+    height: clamp(2rem, 12.31vw - 0.46rem, 4rem);
+  }
+  .logo-text {
+    font-size: clamp(0.875rem, 0.081rem + 5.294vw, 2rem);
+    letter-spacing: clamp(0rem, -0.353rem + 2.353vw, 0.5rem);
+  }
+  .logo-text small {
+    font-size: clamp(0.375rem, -0.148rem + 2.615vw, 0.8rem);
+  }
+  .nav-inner {
+    height: clamp(4rem, 3.206rem + 5.294vw, 5.125rem);
+  }
+}
+
+/* Мобильная навигация: та же лента .tabs становится панелью снизу,
+   бургер больше не нужен */
 @media (max-width: 1050px) {
+  .site-footer {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+  /* кнопка «наверх» поднимается над панелью навигации */
+  :root {
+    --to-top-bottom: calc(78px + env(safe-area-inset-bottom));
+  }
   .tabs {
     position: fixed;
-    top: 64px;
-    right: 16px;
+    inset: auto 0 0 0;
     z-index: 60;
-    flex-direction: column;
-    width: max-content;
-    min-width: 200px;
-    max-width: 80vw;
     height: auto;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    justify-content: center;
+    padding: 0 0 env(safe-area-inset-bottom);
+    border-top: 1px solid var(--line);
     background: var(--white);
-    box-shadow: var(--shadow-md);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: 0.2s;
-    padding: 0;
+    box-shadow: 0 -6px 20px rgba(38, 32, 25, 0.08);
   }
-  .tabs.open {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
+  /* пункты растягиваются по экрану, но на широких планшетах не расползаются */
   .tabs li {
-    width: 100%;
+    flex: 1 1 0;
+    max-width: 132px;
   }
   .tabs a {
     width: 100%;
-    height: 52px;
-    padding: 0 20px;
-    border-bottom: 1px solid var(--line);
-    white-space: nowrap;
+    height: 58px;
+    padding: 0 4px;
+    margin: 0;
+    gap: 4px;
+    justify-content: center;
+    border-top: 2px solid transparent;
+    background: none;
+    font-size: clamp(0.56rem, 0.42rem + 0.53vw, 0.68rem);
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+  .tabs a::before {
+    width: 20px;
+    height: 20px;
   }
   .tabs a:hover {
-    background-color: var(--paper);
-    transition-delay: 0s;
-    background-size: 100% 2px;
+    background: var(--paper-2);
     color: var(--ink);
   }
-  .tabs li:last-child a {
-    border-bottom: none;
-  }
-  .burger {
-    display: block;
+  .tabs a[aria-current="page"] {
+    border-top-color: var(--red);
+    color: var(--ink);
   }
 }
 
 /* ================================================================
    ГЛАВНАЯ СТРАНИЦА
    ================================================================ */
-/* ---------- HOMEPAGE ---------- */
 section {
   position: relative;
   z-index: 2;
@@ -380,7 +572,7 @@ section {
 
 /* ---------- HERO ---------- */
 .hero {
-  padding: 48px 0 32px;
+  padding: clamp(28px, 4.29vw, 48px) 0 clamp(20px, 2.86vw, 32px);
 }
 .hero-grid {
   display: grid;
@@ -389,15 +581,14 @@ section {
   align-items: center;
 }
 .hero h1 {
-  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
-  line-height: 1.08;
   margin: 18px 0 20px;
+  font-size: var(--fs-title);
 }
 .hero h1 em {
   font-style: italic;
   color: var(--red);
 }
-.hero p.lede {
+.lede {
   max-width: 46ch;
   color: var(--ink-soft);
   font-size: 1.05rem;
@@ -408,14 +599,14 @@ section {
   margin-top: 30px;
   flex-wrap: wrap;
 }
+/* кнопка по центру колонки: класс вешается прямо на <a class="btn ..."> */
 .section-more {
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-top: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   justify-self: center;
+  width: 100%;
+  margin-top: 24px;
 }
 .hero-photo {
   position: relative;
@@ -426,50 +617,48 @@ section {
   background: var(--white);
   box-shadow: var(--shadow-md);
 }
-
 .hero-photo .tag {
   position: absolute;
   bottom: -16px;
   left: 24px;
+  padding: 6px 12px;
   background: var(--red);
   color: var(--white);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.05em;
-  padding: 6px 12px;
 }
 
 /* ---------- PLACEHOLDER PHOTO ---------- */
 .ph {
   position: relative;
-  background:
-    repeating-linear-gradient(135deg, #dcd3be 0 2px, transparent 2px 14px),
-    var(--paper-2);
-  border: 1px dashed var(--line);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--ink-soft);
-  text-align: center;
   gap: 8px;
   aspect-ratio: var(--ar, 4/5);
   overflow: hidden;
+  border: 1px dashed var(--line);
+  background:
+    repeating-linear-gradient(135deg, #dcd3be 0 2px, transparent 2px 14px),
+    var(--paper-2);
+  color: var(--ink-soft);
+  text-align: center;
 }
 .ph img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 figure {
   margin: 0;
 }
 figcaption {
   margin-top: 9px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem;
   color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   letter-spacing: 0.01em;
 }
 figcaption b {
@@ -483,8 +672,9 @@ figcaption b {
   margin-bottom: 44px;
 }
 .head h2 {
-  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
+  font-size: var(--fs-title);
   margin-top: 4px;
+  transition: color 0.4s ease;
 }
 .head p {
   color: var(--ink-soft);
@@ -507,103 +697,89 @@ section.block {
 .about-lead p + p {
   margin-top: 14px;
 }
-.section-more {
-  margin-top: 24px;
-  width: 100%;
-}
 
-/* ---------- СЧЁТЧИКИ-ЦИФРЫ ---------- */
-.stats {
+/* ---------- СЧЁТЧИКИ-ЦИФРЫ / ЦЕННОСТИ ---------- */
+.stats,
+.values {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  background: transparent;
   border: 1px solid var(--line);
+}
+.stats {
   margin-bottom: 52px;
 }
-.stat {
-  background: var(--white);
-  padding: 28px 22px;
+.values {
+  margin-bottom: 12px;
+}
+.stat,
+.value {
   position: relative;
-  overflow: hidden;
   z-index: 0;
-  text-align: center;
+  overflow: hidden;
+  background: var(--white);
   box-shadow: var(--shadow-sm);
 }
+.stat {
+  padding: 28px 22px;
+  text-align: center;
+}
+.value {
+  padding: 26px 22px;
+}
 .stat .num {
-  font-family: "Spectral", serif;
-  font-size: 2.5rem;
-  line-height: 1;
   display: flex;
   align-items: baseline;
   justify-content: center;
   gap: 2px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 1.6rem + 1.3vw, 2.5rem);
+  line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 .stat .num sup {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1.05rem;
-  color: var(--red);
   top: -0.9em;
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
 }
 .stat .label {
-  font-family: "JetBrains Mono", monospace;
+  margin-top: 9px;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+.value .n {
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.value h4 {
+  font-size: 1.5rem;
+  margin: 12px 0 8px;
+}
+.value p {
+  margin: 0;
   color: var(--ink-soft);
-  margin-top: 9px;
+  font-size: 0.88rem;
 }
 @media (max-width: 700px) {
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-.values {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: transparent;
-  border: 1px solid var(--line);
-  margin-bottom: 12px;
+@media (max-width: 600px) {
+  .values {
+    grid-template-columns: 1fr;
+  }
 }
-.value {
-  background: var(--white);
-  padding: 26px 22px;
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-  box-shadow: var(--shadow-sm);
-}
-.value .n {
-  font-family: "JetBrains Mono", monospace;
-  color: var(--red);
-  font-size: 0.75rem;
-}
-.value h4 {
-  font-size: 1rem;
-  margin: 12px 0 8px;
-}
-.value p {
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-  margin: 0;
-}
-
 @media (max-width: 540px) {
   .hero-grid {
     grid-template-columns: 1fr;
     margin-left: 36px;
     margin-right: 36px;
-  }
-  .values {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .values {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -614,31 +790,71 @@ section.block {
   align-items: center;
   justify-items: center;
 }
-
-.carousel-grid {
-  display: flex;
-  gap: 32px;
-  margin-top: 16px;
+/* контейнер-источник: адреса фотографий для скрипта, на экране не нужен */
+.carousel-images {
+  display: none;
+}
+/* текст программы и карусель: текст слева, галерея прижата к правому краю */
+.carousel-grid-right,
+.carousel-grid-left {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(100%, 440px);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+/* «Рисунок» (только двухколоночная раскладка): сцена уже колонки — прижимаем её
+   вправо (отступ справа как у «Живописи»), а меньшая высота убирает пустоту у текста */
+@media (min-width: 1097px) {
+  .carousel-grid--narrow .stage-drawings,
+  .carousel-grid--narrow .thumbs-drawings {
+    max-width: 300px;
+    margin-left: auto;
+  }
+}
+.carousel-grid-right > .carousel,
+.carousel-grid-left > .carousel {
+  width: 100%;
+}
+.program-text h2 {
+  margin-bottom: 20px;
+  font-size: var(--fs-title-sm);
+}
+.carousel-caption {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
 }
 .carousel-h {
-  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
-  line-height: 115%;
+  font-size: var(--fs-title-sm);
 }
-
 .stage {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  background: #1c1f26;
   max-width: 520px;
   aspect-ratio: 10/8;
+  overflow: hidden;
+  background: #1c1f26;
 }
-
 .stage-drawings {
   aspect-ratio: 3/4;
   max-width: 440px;
 }
+/* «Живопись»: кадр 4/3 под горизонтальные работы (обрезка портретных фото задумана) */
+.paintings {
+  aspect-ratio: 4 / 3;
+}
 
+@media (max-width: 1096px) {
+  .carousel-grid-right,
+  .carousel-grid-left {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .carousel-grid-right > .carousel,
+  .carousel-grid-left > .carousel {
+    width: min(100%, 440px);
+    justify-self: center;
+  }
+}
 @media (max-width: 1080px) {
   .carousel-grid {
     display: flex;
@@ -648,9 +864,9 @@ section.block {
   }
   .carousel {
     align-self: center;
+    width: 100%;
     max-width: 520px;
     min-width: 200px;
-    width: 100%;
   }
 }
 
@@ -661,17 +877,14 @@ section.block {
   height: 100%;
   will-change: transform;
 }
-
 .slide {
   flex: 0 0 100%;
   height: 100%;
 }
-
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   pointer-events: none;
 }
 
@@ -700,81 +913,60 @@ section.block {
   background: rgba(255, 255, 255, 0.15);
   z-index: 3;
 }
-
 .progress {
   position: relative;
   width: 100%;
   height: 3px;
   overflow: hidden;
 }
-
 .progress-bar {
   position: absolute;
   top: 0;
   left: 0;
-
   width: 0;
   height: 100%;
-
   transform-origin: left center;
-
   background: var(--red);
   opacity: 1;
   pointer-events: none;
 }
-
 .progress-bar--back {
   z-index: 1;
 }
-
 .progress-bar--front {
   z-index: 2;
 }
-
-/*
- * Только что завершившаяся полоса
- * плавно исчезает за 1 секунду.
- */
+/* только что завершившаяся полоса плавно исчезает за 1 секунду */
 .progress-bar.is-fading {
   opacity: 0;
   transition: opacity 1s ease;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .progress-bar.is-fading {
-    transition: none;
-    opacity: 0;
-  }
-}
 /* обёртка-"окно": просто обрезает всё, что не помещается */
 .thumbs {
   position: relative;
-  overflow: hidden;
-  margin-top: 8px;
-  max-width: 520px;
   width: 100%;
+  max-width: 520px;
   height: auto;
+  margin-top: 8px;
+  overflow: hidden;
 }
 .thumbs-drawings {
   max-width: 440px;
 }
-.caps {
-  text-transform: uppercase;
-}
-
 .logo-dot {
   max-width: 7px;
   max-height: 7px;
+  transform: translateY(-1px);
 }
 /* сама лента миниатюр — двигается только через transform (GPU),
-     что даёт гладкую анимацию без дёрганья, в отличие от scrollLeft */
+   что даёт гладкую анимацию без дёрганья, в отличие от scrollLeft */
 .thumbs-track {
   display: flex;
   gap: 8px;
   width: max-content;
   will-change: transform;
 }
-
 .thumb {
   flex: 0 0 auto;
   width: 42px;
@@ -788,12 +980,10 @@ section.block {
     border-color 0.2s ease,
     transform 0.2s ease;
 }
-
 .thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   pointer-events: none;
 }
 .thumb:hover {
@@ -802,108 +992,6 @@ section.block {
 .thumb.active {
   opacity: 1;
   border-color: #fff;
-}
-@media (hover: hover) and (pointer: fine) {
-  .studio-nav {
-    opacity: 0;
-  }
-  .studio-stage:hover .studio-nav,
-  .studio-stage:focus-within .studio-nav,
-  .studio-nav:focus-visible {
-    opacity: 1;
-  }
-}
-.studio-stage__footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 18px;
-  background: linear-gradient(
-    to top,
-    rgba(38, 32, 25, 0.78),
-    rgba(38, 32, 25, 0)
-  );
-  color: var(--paper);
-  pointer-events: none;
-}
-.studio-stage__tag {
-  flex: none;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 4px 9px;
-  border: 1px solid rgba(250, 247, 240, 0.5);
-  border-radius: var(--radius);
-}
-.studio-stage__caption {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.78rem;
-  line-height: 1.4;
-}
-.studio-thumbs {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.studio-thumbs::-webkit-scrollbar {
-  display: none;
-}
-.studio-thumb {
-  position: relative;
-  flex: 0 0 auto;
-  width: 76px;
-  aspect-ratio: 1;
-  padding: 0;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--paper-2);
-  cursor: pointer;
-  opacity: 0.55;
-  scroll-snap-align: start;
-  transition:
-    opacity 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-.studio-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-@media (hover: hover) and (pointer: fine) {
-  .studio-thumb:hover {
-    opacity: 0.85;
-    transform: translateY(-2px);
-  }
-}
-.studio-thumb.is-active {
-  opacity: 1;
-  border-color: var(--red);
-}
-.studio-thumb:focus-visible {
-  opacity: 1;
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
-}
-@media (max-width: 700px) {
-  .studio-thumb {
-    width: 60px;
-  }
 }
 
 /* ---------- ACHIEVEMENTS ---------- */
@@ -916,16 +1004,16 @@ section.block {
 .student-top {
   display: flex;
   gap: 20px;
-  padding: 26px 26px 13px 26px;
+  padding: 26px 26px 13px;
   border-bottom: 1px solid var(--line);
   align-items: center;
   flex-wrap: wrap;
 }
 .student-id h4 {
-  font-size: 1.5rem;
+  font-size: clamp(1.65rem, 1.5rem + 0.74vw, 2rem);
 }
 .student-id span {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--ink-soft);
 }
@@ -936,7 +1024,7 @@ section.block {
   flex-wrap: wrap;
 }
 .student-meta div {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--ink-soft);
   text-transform: uppercase;
@@ -944,16 +1032,16 @@ section.block {
 }
 .student-meta strong {
   display: block;
-  font-family: "Inter", sans-serif;
+  margin-top: 4px;
+  font-family: var(--font-sans);
   font-size: 0.92rem;
+  font-weight: 500;
   color: var(--ink);
   text-transform: none;
   letter-spacing: 0;
-  margin-top: 4px;
-  font-weight: 500;
 }
 .student-body {
-  padding: 26px 26px 26px 26px;
+  padding: 26px;
   display: grid;
   grid-template-columns: 1.1fr 1.4fr;
   gap: 28px;
@@ -961,7 +1049,6 @@ section.block {
 .student-body-fixed {
   padding-bottom: 16px;
 }
-
 .student-body p {
   color: var(--ink-soft);
   margin: 0 0 10px;
@@ -975,26 +1062,14 @@ section.block {
   .student-body {
     grid-template-columns: 1fr;
   }
-  .student-meta {
-    margin-left: auto;
-    display: flex;
-    gap: 26px;
-    flex-wrap: wrap;
-  }
 }
 
 /* ---------- PROGRAMS ---------- */
 .programs {
-  display: flex;
-  gap: 1px;
-  background: transparent;
-  border: 1px solid var(--line);
-}
-.programs--pricing {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-.program:nth-child(odd):last-child {
-  grid-column: span 2;
+  gap: 1px;
+  border: 1px solid var(--line);
 }
 .program {
   background: var(--white);
@@ -1004,12 +1079,12 @@ section.block {
   box-shadow: var(--shadow-sm);
 }
 .program .n {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--red);
 }
 .program h3 {
-  font-size: 1.15rem;
+  font-size: 1.65rem;
   padding-top: 8px;
   margin: 14px 0 10px;
 }
@@ -1021,23 +1096,14 @@ section.block {
 .program .meta {
   display: flex;
   justify-content: space-between;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
-  color: var(--ink-soft);
-  border-top: 1px solid var(--line);
   padding-top: 14px;
   margin-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-}
-.paintings {
-  aspect-ratio: 4 / 3;
-}
-.big {
-  grid-row: span 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  flex: 2;
 }
 .price-list {
   list-style: none;
@@ -1059,18 +1125,15 @@ section.block {
   font-size: 0.85rem;
 }
 .price-list li span:last-child {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--ink);
   white-space: nowrap;
 }
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .programs {
     grid-template-columns: 1fr;
-  }
-  .program:nth-child(odd):last-child {
-    grid-column: span 1;
   }
 }
 
@@ -1093,14 +1156,14 @@ section.block {
   gap: 5px;
 }
 .contact-list li span:first-child {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 .contact-list li span:last-child {
-  font-family: "Spectral", serif;
+  font-family: var(--font-serif);
   font-size: 1.05rem;
 }
 .contact-list li span:last-child a {
@@ -1120,42 +1183,37 @@ section.block {
   gap: 10px;
 }
 .social-row a {
-  position: relative; /* Важно для позиционирования градиента */
-  z-index: 1; /* Чтобы текст/иконка были поверх градиента */
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
   border: 1px solid var(--ink);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--ink);
   text-decoration: none;
   background-color: transparent;
-  overflow: hidden; /* Чтобы градиент не вылезал за круглые края */
+  overflow: hidden;
   transition:
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out,
     color 0.15s ease-in-out;
 }
-
 .social-row a svg {
+  position: relative;
+  z-index: 2;
   width: 18px;
   height: 18px;
-  position: relative;
-  z-index: 2; /* Гарантирует, что иконка всегда сверху */
 }
-
-/* Обычный ховер для Telegram (простой цвет) */
+/* Telegram — простой цветной ховер */
 .social-row a.social-tg:hover {
   background-color: #0088cc;
   border-color: transparent;
   color: #fff;
 }
-
-/* --- Настройки для Instagram --- */
-
-/* Создаем скрытый градиентный слой внутри кнопки */
+/* Instagram — градиентный слой, плавно проявляющийся при ховере */
 .social-row a.social-ig::before {
   content: "";
   position: absolute;
@@ -1164,104 +1222,21 @@ section.block {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, #feda77, #f58529, #dd2a7b, #8134af);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
   z-index: -1;
-  opacity: 0; /* Изначально прозрачный */
-  transition: opacity 0.15s ease-in-out; /* Плавность как у остальных элементов */
 }
-
-/* Ховер для Instagram */
 .social-row a.social-ig:hover {
   border-color: transparent;
   color: #fff;
 }
-
-/* При ховере плавно включаем видимость градиента */
 .social-row a.social-ig:hover::before {
   opacity: 1;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-form > div {
-  display: flex;
-  flex-direction: column;
-}
-form label {
-  display: block;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  margin-bottom: 8px;
-}
-form input,
-form textarea {
-  width: 100%;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  padding: 12px 14px;
-  border: 1px solid var(--line-strong);
-  background: var(--white);
-  border-radius: var(--radius);
-  color: var(--ink);
-}
-form input.invalid,
-form textarea.invalid {
-  border-color: var(--red-text);
-}
-form input.invalid:focus,
-form textarea.invalid:focus {
-  outline-color: var(--red-text);
-}
-.field-error {
-  display: none;
-  margin-top: 6px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.74rem;
-  color: var(--red-text);
-}
-.field-error.visible {
-  display: block;
-}
-form textarea {
-  resize: vertical;
-  min-height: 90px;
-}
-.form-status {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.78rem;
-  margin: 2px 0 0;
-  color: var(--ink-soft);
-  min-height: 1.3em;
-  line-height: 1.5;
-}
-.form-status--ok {
-  color: var(--green);
-}
-.form-status--error {
-  color: var(--red-text);
-}
-.form-status a {
-  color: inherit;
-}
-form button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-#form-submit-btn {
-  align-self: flex-start;
 }
 @media (max-width: 880px) {
   .contact-grid {
     grid-template-columns: 1fr;
   }
-}
-
-#contact-form {
-  padding-top: 14px;
 }
 
 /* ---------- ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ---------- */
@@ -1324,7 +1299,7 @@ form button:disabled {
   flex-wrap: wrap;
 }
 .hero-signature span {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--ink-soft);
   letter-spacing: 0.04em;
@@ -1341,6 +1316,7 @@ form button:disabled {
 /* ---------- ЗАЛИВКА ЦВЕТОМ ПРИ НАВЕДЕНИИ (программы, заголовки секций) ---------- */
 .text-fill {
   display: inline-block;
+  width: fit-content;
   background-image: linear-gradient(90deg, var(--red) 50%, var(--ink) 50%);
   background-size: 200% 100%;
   background-position: 100% 0;
@@ -1348,10 +1324,6 @@ form button:disabled {
   background-clip: text;
   color: transparent;
   transition: background-position 0.5s ease;
-  width: fit-content;
-}
-.head h2 {
-  transition: color 0.4s ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .program:hover h3.text-fill {
@@ -1417,43 +1389,22 @@ form button:disabled {
   transition: width 0.08s linear;
 }
 
-.field-checkbox {
-  display: flex;
-  gap: 10px;
-  font-size: 0.9em;
-  flex-direction: row;
-  align-items: flex-start;
-}
-.field-checkbox input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  flex-shrink: 0;
-  accent-color: var(--ink);
-}
-.field-checkbox label a {
-  text-decoration: underline;
-}
-.field-checkbox input.invalid + label {
-  color: var(--red-text);
-}
-
 /* ---------- КНОПКА «НАВЕРХ» ---------- */
 .to-top {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: var(--to-top-bottom);
   z-index: 120;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--paper);
-  border: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
   box-shadow: 0 8px 20px rgba(38, 32, 25, 0.22);
   opacity: 0;
   transform: translateY(12px);
@@ -1476,6 +1427,7 @@ form button:disabled {
   background: var(--red);
 }
 
+/* ---------- ДО/ПОСЛЕ И РАБОТЫ УЧЕНИКОВ ---------- */
 .before-after {
   display: flex;
   align-items: flex-start;
@@ -1483,24 +1435,11 @@ form button:disabled {
   gap: 26px;
   width: 100%;
 }
-
-@media (max-width: 680px) {
-  .before-after {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 13px;
-    width: 100%;
-    flex-direction: row;
-  }
-}
-
 .student-work {
   flex: 0 1 auto;
   min-width: 0;
   margin: 0;
 }
-
 .student-image {
   height: clamp(190px, 34vw - 58px, 290px);
   display: flex;
@@ -1508,29 +1447,35 @@ form button:disabled {
   justify-content: center;
   max-width: 100%;
 }
-
 .student-image img {
-  display: block;
   height: 100%;
   width: auto;
   max-width: 100%;
   object-fit: contain;
   border: solid 1px var(--line);
 }
-
+.student-work figcaption {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  text-align: center;
+}
 @media (max-width: 760px) {
   .student-image {
     height: clamp(115px, 64vw - 82px, 290px);
   }
 }
-
-.student-work figcaption {
-  margin-top: 10px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem;
-  line-height: 1.4;
-  color: var(--ink-soft);
-  text-align: center;
+@media (max-width: 680px) {
+  .before-after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 13px;
+    width: 100%;
+  }
 }
 
 /* ================================================================
@@ -1543,7 +1488,7 @@ form button:disabled {
   z-index: 2;
 }
 .about-hero {
-  padding: 88px 0 76px;
+  padding: clamp(48px, 7.86vw, 88px) 0 clamp(44px, 6.79vw, 76px);
 }
 .about-hero__grid {
   display: grid;
@@ -1553,8 +1498,7 @@ form button:disabled {
 }
 .about-hero h1 {
   margin: 18px 0 20px;
-  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
-  line-height: 1.02;
+  font-size: var(--fs-title);
 }
 .about-hero h1 em {
   color: var(--red);
@@ -1580,12 +1524,12 @@ form button:disabled {
 .about-hero__photo figcaption {
   margin-top: 13px;
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   text-align: right;
 }
 .about-section {
-  padding: 48px 0;
+  padding: clamp(32px, 4.29vw, 48px) 0;
   border-top: 1px solid var(--line);
 }
 .section-heading {
@@ -1594,8 +1538,7 @@ form button:disabled {
 }
 .section-heading h2 {
   margin-top: 14px;
-  font-size: clamp(1.25rem, 0.509rem + 3.704vw, 2.5rem);
-  line-height: 1.1;
+  font-size: var(--fs-title);
 }
 .two-columns {
   display: grid;
@@ -1634,7 +1577,7 @@ form button:disabled {
 }
 .awards span {
   color: var(--red);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.76rem;
 }
 .awards p {
@@ -1665,12 +1608,6 @@ form button:disabled {
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
-@media (hover: hover) and (pointer: fine) {
-  .teaching-award:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
-  }
-}
 .teaching-award--featured {
   grid-column: span 2;
   background: var(--ink);
@@ -1689,21 +1626,20 @@ form button:disabled {
 }
 .document-type {
   color: var(--red-text);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 .teaching-award time {
   color: var(--ink-soft);
-  font-family: "Spectral", serif;
+  font-family: var(--font-serif);
   font-size: 1.2rem;
   line-height: 1;
 }
 .teaching-award h3 {
   margin: 34px 0 12px;
-  font-size: 1.3rem;
-  line-height: 1.12;
+  font-size: clamp(1.6rem, 1.5rem + 0.45vw, 1.8rem);
 }
 .teaching-award p {
   margin: 0;
@@ -1719,7 +1655,7 @@ form button:disabled {
   padding-top: 18px;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -1749,6 +1685,12 @@ form button:disabled {
 .teaching-award--accent footer {
   border-top-color: currentColor;
 }
+@media (hover: hover) and (pointer: fine) {
+  .teaching-award:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+}
 .section-heading--row {
   display: flex;
   align-items: end;
@@ -1766,12 +1708,6 @@ form button:disabled {
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
-.work-gallery figure {
-  margin: 0;
-}
-.work-gallery__large {
-  grid-column: span 2;
-}
 .work-gallery img {
   width: 100%;
   object-fit: cover;
@@ -1781,24 +1717,21 @@ form button:disabled {
     box-shadow 0.2s ease,
     transform 0.2s ease;
 }
-@media (hover: hover) and (pointer: fine) {
-  .work-gallery img:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
-  }
-}
-.work-gallery__large img {
-  aspect-ratio: 4/5;
-}
 .work-gallery figcaption {
   margin-top: 9px;
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
 }
 .work-gallery figcaption b {
   color: var(--red);
   font-weight: 500;
+}
+@media (hover: hover) and (pointer: fine) {
+  .work-gallery img:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
 }
 .about-section--closing {
   padding: 36px 0;
@@ -1813,18 +1746,15 @@ form button:disabled {
 .closing h2 {
   max-width: 18ch;
   margin-top: 14px;
-  font-size: clamp(1.6rem, 3vw, 2.35rem);
-  line-height: 1.12;
+  font-size: clamp(2.1rem, 3vw, 2.85rem);
 }
 .closing p {
   max-width: 42ch;
-  margin: 36px 0 0;
+  margin: 0;
   color: var(--ink-soft);
 }
 .closing .btn {
-  display: block;
-  margin-top: 36px;
-  text-align: center;
+  justify-self: center;
 }
 @media (max-width: 880px) {
   .about-hero {
@@ -1854,7 +1784,7 @@ form button:disabled {
 }
 @media (max-width: 600px) {
   .about-hero h1 {
-    font-size: clamp(2.2rem, 12vw, 3.2rem);
+    font-size: clamp(2.1rem, 1.7rem + 2.5vw, 2.4rem);
   }
   .about-section {
     padding: 58px 0;
@@ -1865,9 +1795,6 @@ form button:disabled {
   }
   .work-gallery {
     grid-template-columns: 1fr;
-  }
-  .work-gallery__large {
-    grid-column: auto;
   }
   .teaching-awards {
     grid-template-columns: 1fr;
@@ -1885,15 +1812,13 @@ form button:disabled {
 /* ================================================================
    ПРОГРАММЫ / ГАЛЕРЕЯ / УЧЕНИКИ / ОТЗЫВЫ — общие блоки
    ================================================================ */
-/* ---------- ОБЩЕЕ ДЛЯ ДОПОЛНИТЕЛЬНЫХ СТРАНИЦ ---------- */
 .page-hero {
-  padding: 76px 0 20px;
+  padding: clamp(20px, 3vw, 32px) 0 0;
 }
 .page-hero h1 {
   max-width: 20ch;
   margin: 18px 0 20px;
-  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
-  line-height: 1.06;
+  font-size: var(--fs-title);
 }
 .page-hero__lede {
   max-width: 64ch;
@@ -1901,11 +1826,16 @@ form button:disabled {
   color: var(--ink-soft);
   font-size: 1.06rem;
 }
+/* вертикальный ритм на подстраницах задаёт сама секция,
+   без двойного отступа .wrap + .page-section */
 .page-section {
-  padding: 56px 0;
+  padding: clamp(18px, 2.6vw, 30px) 0;
   border-top: 1px solid var(--line);
 }
-.page-section:first-of-type {
+.page-section > .wrap {
+  padding-block: 0;
+}
+.page-hero + .page-section {
   border-top: none;
 }
 
@@ -1927,7 +1857,7 @@ form button:disabled {
   gap: 20px;
   padding: 22px 4px;
   cursor: pointer;
-  font-family: "Spectral", serif;
+  font-family: var(--font-serif);
   font-size: 1.08rem;
   color: var(--ink);
   list-style: none;
@@ -1943,7 +1873,7 @@ form button:disabled {
   flex: none;
   width: 22px;
   text-align: center;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 1.2rem;
   color: var(--red-text);
 }
@@ -1980,7 +1910,7 @@ form button:disabled {
 .proof-table th {
   padding: 14px 18px;
   text-align: left;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -1998,12 +1928,12 @@ form button:disabled {
   border-bottom: none;
 }
 .proof-table td:first-child {
-  font-family: "Spectral", serif;
+  font-family: var(--font-serif);
   font-size: 1.05rem;
 }
 .proof-table td.dim {
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
 }
 
@@ -2025,10 +1955,9 @@ form button:disabled {
 .empty-state .btn {
   margin-top: 4px;
 }
-
 @media (max-width: 760px) {
   .page-section {
-    padding: 44px 0;
+    padding: 16px 0;
   }
 }
 
@@ -2038,14 +1967,13 @@ form button:disabled {
 .privacy-hero {
   position: relative;
   z-index: 2;
-  padding: 88px 0 48px;
+  padding: clamp(48px, 7.86vw, 88px) 0 clamp(32px, 4.29vw, 48px);
   border-bottom: 1px solid var(--line);
 }
 .privacy-hero h1 {
   max-width: 22ch;
   margin: 16px 0 18px;
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  line-height: 1.08;
+  font-size: clamp(2.5rem, 4.2vw, 3.7rem);
 }
 .privacy-hero__lede {
   max-width: 60ch;
@@ -2056,16 +1984,15 @@ form button:disabled {
 .privacy-updated {
   margin: 0;
   color: var(--ink-soft);
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
-
 .privacy-section {
   position: relative;
   z-index: 2;
-  padding: 56px 0 90px;
+  padding: clamp(36px, 5vw, 56px) 0 clamp(56px, 8.04vw, 90px);
 }
 .privacy-section .prose {
   max-width: 74ch;
@@ -2076,10 +2003,9 @@ form button:disabled {
   padding-top: 28px;
   border-top: 1px solid var(--line);
   color: var(--ink);
-  font-family: "Spectral", serif;
+  font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 1.3rem;
-  line-height: 1.2;
+  font-size: clamp(1.6rem, 1.5rem + 0.45vw, 1.8rem);
 }
 .privacy-section h2:first-of-type {
   margin-top: 0;
@@ -2106,7 +2032,6 @@ form button:disabled {
   color: var(--red-text);
   text-decoration: underline;
 }
-
 @media (max-width: 600px) {
   .privacy-hero {
     padding: 62px 0 36px;
@@ -2175,14 +2100,13 @@ form button:disabled {
 }
 .notfound h1 {
   margin: 16px 0 8px;
-  font-size: clamp(20px, 4vw, 28px);
+  font-size: clamp(28px, 4vw, 36px);
 }
 .notfound p {
   max-width: 40ch;
   margin: 0 0 28px;
   color: var(--ink-soft);
 }
-
 @media (max-width: 600px) {
   .notfound {
     padding: 20px;
@@ -2193,11 +2117,11 @@ form button:disabled {
 }
 
 .btn-fixed {
-  transition-delay: 0ms;
   width: 100%;
   max-width: 440px;
   margin: 24px auto;
   align-self: center;
+  transition-delay: 0ms;
 }
 
 /* ---------- ПОНИЖЕННАЯ АНИМАЦИЯ (prefers-reduced-motion) ---------- */
@@ -2211,17 +2135,13 @@ form button:disabled {
   .btn:hover {
     transform: none;
   }
-  .studio-nav,
-  .studio-thumb {
-    transition: none;
-  }
   .reveal,
   .reveal-group > * {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  .sig-draw path {
+  .signature path {
     stroke-dashoffset: 0 !important;
     transition: none !important;
   }
@@ -2231,6 +2151,10 @@ form button:disabled {
   }
   .stat::before,
   .value::before {
+    transition: none;
+  }
+  .progress-bar.is-fading {
+    opacity: 0;
     transition: none;
   }
   .scroll-progress-bar {
@@ -2248,9 +2172,4 @@ form button:disabled {
     opacity: 1;
     transform: none;
   }
-
-  /* МУСОРКА */
-}
-.widthmax {
-  max-width: 100%;
 }
