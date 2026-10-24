@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Тест тактильного отклика</title>
+<style>
+  :root { color-scheme: light dark; font-family: -apple-system, system-ui, sans-serif; }
+  body { margin: 0; padding: 16px; max-width: 560px; margin-inline: auto; line-height: 1.4; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  h2 { font-size: 16px; margin: 24px 0 8px; }
+  section { border: 1px solid #8884; border-radius: 12px; padding: 12px 14px; margin-top: 14px; }
+  button { font: inherit; padding: 12px 16px; border-radius: 10px; border: 0; background: #2a6df4; color: #fff; width: 100%; }
+  fieldset { border: 0; padding: 0; margin: 8px 0; }
+  legend { font-weight: 600; font-size: 14px; padding: 0; }
+  label.opt { display: block; padding: 4px 0; font-size: 15px; }
+  #pad { margin-top: 10px; height: 140px; border-radius: 12px; background: #8882; display: grid; place-items: center;
+         text-align: center; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  #stats, #env { font: 13px ui-monospace, Menlo, monospace; white-space: pre-wrap; }
+  .hint { font-size: 13px; opacity: .75; }
+</style>
+</head>
+<body>
+<h1>Тест тактильного отклика</h1>
+<p class="hint">Откройте на iPhone в Safari. В каждом пункте скажите, что <b>почувствовали</b> (лёгкий «тик» или ничего).</p>
+<div id="env"></div>
+
+<section>
+  <h2>1. Контроль: обычный тап</h2>
+  <p class="hint">Вызов отклика прямо в обработчике click. Если здесь тишина — дело в настройках iPhone или версии iOS (ниже).</p>
+  <button id="tap">Тап → отклик</button>
+</section>
+
+<section>
+  <h2>2. Свайп (то, что нужно карусели)</h2>
+  <fieldset>
+    <legend>Событие, из которого вызываем</legend>
+    <label class="opt"><input type="radio" name="ev" value="pointermove" checked> pointermove</label>
+    <label class="opt"><input type="radio" name="ev" value="touchmove"> touchmove</label>
+  </fieldset>
+  <fieldset>
+    <legend>Скрытый переключатель</legend>
+    <label class="opt"><input type="radio" name="mode" value="none" checked> display:none (как сейчас в карусели)</label>
+    <label class="opt"><input type="radio" name="mode" value="rendered"> невидимый, но отрисованный</label>
+  </fieldset>
+  <fieldset>
+    <legend>Момент вызова</legend>
+    <label class="opt"><input type="radio" name="when" value="now" checked> сразу</label>
+    <label class="opt"><input type="radio" name="when" value="timeout"> через setTimeout(0)</label>
+    <label class="opt"><input type="radio" name="when" value="raf"> через requestAnimationFrame</label>
+  </fieldset>
+  <div id="pad">Ведите пальцем сюда<br>вперёд-назад</div>
+  <div id="stats"></div>
+</section>
+
+<section>
+  <h2>3. Конец жеста</h2>
+  <p class="hint">Один «тик» в момент, когда палец отпущен (pointerup/touchend считаются жестом пользователя).</p>
+  <label class="opt"><input type="checkbox" id="onEnd"> тик при отпускании пальца на блоке выше</label>
+</section>
+
+<section>
+  <h2>Если везде тишина</h2>
+  <p class="hint">
+    • Настройки → Звуки и тактильные сигналы → «Системные тактильные сигналы» включить.<br>
+    • Отключить «Режим энергосбережения».<br>
+    • Нужна iOS 17.4 или новее.<br>
+    • Открывать именно в Safari (во встроенных браузерах Telegram/Instagram и т. п. не работает).
+  </p>
+</section>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const val = (name) => document.querySelector(`input[name=${name}]:checked`).value;
+
+  // ---- окружение ----
+  $("#env").textContent =
+    "UA: " + navigator.userAgent.replace(/\s+/g, " ").slice(0, 110) + "\n" +
+    "navigator.vibrate: " + (typeof navigator.vibrate === "function" ? "есть" : "НЕТ") + "\n" +
+    "navigator.userActivation: " + (navigator.userActivation ? "есть" : "нет");
+
+  // ---- скрытый переключатель ----
+  let label = null;
+  function buildSwitch(mode) {
+    if (label) label.remove();
+    label = document.createElement("label");
+    label.setAttribute("aria-hidden", "true");
+    if (mode === "none") label.style.display = "none";
+    else label.style.cssText = "position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden";
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.setAttribute("switch", "");
+    label.appendChild(input);
+    document.body.appendChild(label);
+  }
+  buildSwitch("none");
+  document.querySelectorAll("input[name=mode]").forEach((r) => r.addEventListener("change", () => buildSwitch(val("mode"))));
+
+  const tick = () => { if (label) label.click(); };
+
+  // ---- 1. тап ----
+  $("#tap").addEventListener("click", () => tick());
+
+  // ---- 2. свайп ----
+  let attempts = 0, activeAttempts = 0, lastAt = 0, lastActive = "—";
+  const stats = $("#stats");
+  const render = () => {
+    stats.textContent =
+      "попыток тика: " + attempts + "\n" +
+      "из них при userActivation.isActive=true: " + activeAttempts + "\n" +
+      "последняя: isActive=" + lastActive;
+  };
+  render();
+
+  function attempt(kind) {
+    if (val("ev") !== kind) return;
+    const now = performance.now();
+    if (now - lastAt < 150) return;          // не чаще раза в 150 мс
+    lastAt = now;
+
+    const fire = () => {
+      const active = navigator.userActivation ? navigator.userActivation.isActive : "n/a";
+      lastActive = String(active);
+      attempts++;
+      if (active === true) activeAttempts++;
+      tick();
+      render();
+    };
+    const when = val("when");
+    if (when === "now") fire();
+    else if (when === "timeout") setTimeout(fire, 0);
+    else requestAnimationFrame(fire);
+  }
+
+  const pad = $("#pad");
+  pad.addEventListener("pointermove", () => attempt("pointermove"));
+  pad.addEventListener("touchmove", () => attempt("touchmove"), { passive: true });
+
+  // ---- 3. конец жеста ----
+  const end = () => { if ($("#onEnd").checked) tick(); };
+  pad.addEventListener("pointerup", end);
+  pad.addEventListener("touchend", end);
+})();
+</script>
+</body>
+</html>
