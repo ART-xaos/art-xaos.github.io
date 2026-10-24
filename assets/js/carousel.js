@@ -16,6 +16,7 @@
   //   вне экрана и в фоновой вкладке; отключается при
   //   prefers-reduced-motion
   // - предзагрузка соседних фото, blur-плейсхолдер на время загрузки
+  // - тактильный отклик на телефоне при смене фото свайпом ленты миниатюр
   //
   // Фото задаются в .carousel-images: <img data-src="big.jpg"> (или src).
   // Необязательные атрибуты у <img>:
@@ -59,6 +60,15 @@
   // --- загрузка фото ---
   const PLACEHOLDER_FADE_MS = 400;
 
+  // --- вибрация (только касание пальцем, только свайп ленты миниатюр) ---
+  const HAPTIC_ENABLED = true;
+  const HAPTIC_MS = 8; // длина импульса
+  const HAPTIC_MIN_INTERVAL_MS = 40; // чтобы при быстром броске не «жужжало»
+
+  // iPhone не поддерживает navigator.vibrate. Экспериментальный обход
+  // (iOS 17.4+): «щелчок» скрытого переключателя даёт системный отклик
+  const HAPTIC_IOS_SWITCH = true;
+
   // ================================================================
   // ВНУТРЕННИЕ КОНСТАНТЫ
   // ================================================================
@@ -81,6 +91,57 @@
       : null;
 
   let reduceMotion = !!(motionQuery && motionQuery.matches);
+
+  // ---- тактильный отклик ----
+
+  let lastHaptic = 0;
+  let iosSwitchLabel = null;
+
+  function iosTick() {
+    if (!iosSwitchLabel) {
+      iosSwitchLabel = document.createElement("label");
+      iosSwitchLabel.setAttribute("aria-hidden", "true");
+      iosSwitchLabel.style.display = "none";
+
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.setAttribute("switch", "");
+
+      iosSwitchLabel.appendChild(input);
+      document.body.appendChild(iosSwitchLabel);
+    }
+
+    iosSwitchLabel.click();
+  }
+
+  function haptic() {
+    if (!HAPTIC_ENABLED || reduceMotion) {
+      return;
+    }
+
+    const now = performance.now();
+
+    if (now - lastHaptic < HAPTIC_MIN_INTERVAL_MS) {
+      return;
+    }
+
+    lastHaptic = now;
+
+    if (typeof navigator.vibrate === "function") {
+      // Chrome блокирует vibrate, пока пользователь ни разу не касался страницы
+      if (navigator.userActivation && !navigator.userActivation.hasBeenActive) {
+        return;
+      }
+
+      navigator.vibrate(HAPTIC_MS);
+    } else if (HAPTIC_IOS_SWITCH) {
+      try {
+        iosTick();
+      } catch (error) {
+        // не критично
+      }
+    }
+  }
 
   const instances = new Set();
 
@@ -229,6 +290,9 @@
     let wheelTimer = null;
     let wheelDelta = 0;
     let wheelFrame = null;
+
+    // вибрировать, только если ленту ведёт палец (а не мышь/трекпад)
+    let hapticActive = false;
 
     // --- autoplay ---
     let progressAnim = null;
@@ -638,6 +702,10 @@
 
         if (scrubbing) {
           scheduleSlideSync();
+
+          if (hapticActive) {
+            haptic();
+          }
         }
       }
     }
@@ -798,6 +866,7 @@
 
     function finishMotion() {
       moving = false;
+      hapticActive = false;
 
       // Точно в центр целевой миниатюры
       relocateActive(midCopy * N + mod(T, N));
@@ -1023,6 +1092,8 @@
         return;
       }
 
+      hapticActive = event.pointerType === "touch";
+
       // Палец «ловит» ленту, если она ещё едет (в том числе от колеса)
       const wasMoving = moving || wheelActive;
 
@@ -1233,6 +1304,7 @@
     function wheelScrub(delta) {
       if (!wheelActive) {
         wheelActive = true;
+        hapticActive = false;
 
         stopMotion();
         scrubbing = true;
