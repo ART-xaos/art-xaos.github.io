@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Служебные и технические файлы
+Disallow: /.idea/
+Disallow: /404.html
+Disallow: /assets/js/page-404.js
+
+Sitemap: https://art-xaos.github.io/sitemap.xml
