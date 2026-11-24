@@ -686,7 +686,7 @@ section {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 .hero h1 {
   margin: 18px 0 20px;
@@ -1626,7 +1626,7 @@ html.js-reveals .reveal-group > *:nth-child(n + 6) {
   z-index: 2;
 }
 .about-hero {
-  padding: clamp(48px, 7.86vw, 88px) 0 clamp(44px, 6.79vw, 76px);
+  padding: clamp(28px, 4.29vw, 48px) 0px clamp(20px, 2.86vw, 32px);
 }
 .about-hero__grid {
   display: grid;
