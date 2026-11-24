@@ -938,7 +938,7 @@ section.block {
   display: grid;
   grid-template-columns: minmax(0, 1fr) min(100%, 440px);
   gap: clamp(24px, 4vw, 56px);
-  align-items: center;
+  align-items: start;
 }
 .carousel-grid-right > .carousel,
 .carousel-grid-left > .carousel {
